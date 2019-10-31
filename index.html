@@ -1,22 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Road Trip App</title>
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <!-- jQuery -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <!-- Link to Moment.js should go here -->
-     <script type= "text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-      <!-- Firebase Core JavaScript Link -->
-      <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-      <!-- Specific Firebase products we want (Database) -->
-      <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Employee Data Mgmt.</title>
 </head>
+
 <body>
-    <h1>hello!</h1>
+    <br>
+    <div class="jumbotron jumbotron-fluid col-8 mx-auto text-center p-3 mb-2 bg-dark text-white">
+        <div class="container">
+            <br>
+            <h1 class="display-4">Employee Data Management</h1>
+            <p class="lead">A Comprehensive Directory of Employee Billable Hours</p>
+            <br>
+        </div>
+    </div>
+<br>
+
+    <div class="card col-9 mx-auto">
+        <div class="card-header">
+            Current Employees
+        </div>
+        <div class="col-sm-12"></div>
+
+        <table class="card-body table">
+            <thead>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Start Data</th>
+                    <th scope="col">Months worked</th>
+                    <th scope="col">Monthly Rate ($)</th>
+                    <th scope="col">Total Billed ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">###</th>
+                    <td>###</td>
+                    <td>###</td>
+                    <td>###</td>
+                    <td>###</td>
+                    <td>###</td>
+                    <td>###</td>
+                </tr>
+                <tr>
+                        <th scope="row">###</th>
+                        <td>###</td>
+                        <td>###</td>
+                        <td>###</td>
+                        <td>###</td>
+                        <td>###</td>
+                        <td>###</td>
+                    </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+        <div class="row col-9 mx-auto">
+                <div class="col-sm-12">
+                    <br>
+                    <!-- First card is for handling the search parameters -->
+                    <div class="card">
+                        <div class="card-header" id="add-employee">
+                            Add Employee
+                        </div>
+                        <div class="card-body">
+                            <form role="form">
+        
+                                <!-- Here we capture the employee's name -->
+                                <div class="form-group">
+                                    <label for="name">Employee Name:</label>
+                                    <input type="text" class="form-control" id="employee-name">
+                                </div>
+        
+                                <!-- Here we capture the employee's role  -->
+                                <div class="form-group">
+                                    <label for="role">Role:</label>
+                                    <input type="text" class="form-control" id="employee-role">
+                                </div>
+        
+                                <!-- Here we capture the Start Date-->
+                                <div class="form-group">
+                                    <label for="start-date">Start Date (MM/DD/YYYY)</label>
+                                    <input type="text" class="form-control" id="start-date">
+                                </div>
+        
+                                <!-- Here we capture the Monthly Rate  -->
+                                <div class="form-group">
+                                    <label for="monthly-rate">Monthly Rate:</label>
+                                    <input type="text" class="form-control" id="monthly-rate">
+                                </div>
+        
+        
+        
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <br>
+            <div class="row">
+                <div class="col-sm-9">
+                </div>
+                <div class="col-sm-2">
+                    <!-- Here we have our final submit button -->
+                    <button type="submit" class="btn btn-primary " id="submit-info">
+                        Submit</button>
+                </div>
+            </div>
+
+            <br>
+        
+        
+
 </body>
+
 </html>
