@@ -21,17 +21,43 @@
 </head>
 <body>
     <h1>hello!</h1>
-<!-- input for city, state, and date  AND city and state (destination) -->
+<!-- input for city, state, and date  -->
+<form>
+    <div class="form-group">
+        <label for="city">City Name</label>
+        <input type="city" class="form-control" id="city" placeholder="City" required>
+    </div>
+    <div class="form-group">
+        <label for="state">State Name</label>
+        <input type="state" class="form-control" id="state" placeholder="state" required>
+    </div>
+    ​
+    <div class="form-group">
+        <label for="Date">Date</label>
+        <input type="date" class="form-control" id="date" placeholder="day/month" required>
+    </div>
 
-<!--div for plane tickets url  -->
+    <button id="submit" type="button" class="btn btn-primary">Search</button>
 
-<!-- div for distance api -->
 
-<!-- div for things to do in each state on the way -->
+    <!-- div for displaying weather info -->
+      <!-- Retrieved data will be dumped here -->
+<div id= "cityName"></div>
+  <div id="city"></div>
+  <div id="wind"></div>
+  <div id="humidity"></div>
+  <div id="temp"></div>
+
+
+<!-- catagory for events   use ticket master or/ and yelp -->
+
+<!--div for plane tickets url ?  -->
+
+<!-- div for distance api  or google maps/ map quest to go there -->
 
 <!-- weather api in locations -->
 
-<!-- bookings/ hotels on the way -->
+<!-- bookings/ hotels on the way ? -->
 
     <script type="text/javascript" src="Assets/script.js"></script>
 
