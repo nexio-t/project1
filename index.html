@@ -1,65 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Road Trip App</title>
     <!-- css -->
-        <link rel="stylesheet" type="style/css" href="Assets/style.css">
+    <link rel="stylesheet" type="style/css" href="Assets/style.css">
 
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <!-- jQuery -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <!-- Link to Moment.js should go here -->
-     <script type= "text/javascript" src= "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-      <!-- Firebase Core JavaScript Link -->
-      <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-      <!-- Specific Firebase products we want (Database) -->
-      <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Link to Moment.js should go here -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Firebase Core JavaScript Link -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <!-- Specific Firebase products we want (Database) -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
+
 <body>
     <h1>hello!</h1>
-<!-- input for city, state, and date  -->
-<form>
-    <div class="form-group">
-        <label for="city">City Name</label>
-        <input type="city" class="form-control" id="city" placeholder="City" required>
-    </div>
-    <div class="form-group">
-        <label for="state">State Name</label>
-        <input type="state" class="form-control" id="state" placeholder="state" required>
-    </div>
-    ​
-    <div class="form-group">
-        <label for="Date">Date</label>
-        <input type="date" class="form-control" id="date" placeholder="day/month" required>
-    </div>
+    <!-- input for city, state, and date  -->
+    <form>
+        <div class="form-group">
+            <label for="city">City Name</label>
+            <input type="city" class="form-control" id="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+            <label for="state">State Name</label>
+            <input type="state" class="form-control" id="state" placeholder="state" required>
+        </div>
+        <div class="form-group">
+            <label for="eventType">Event Type</label>
+            <input type="event" class="form-control" id="eventType" placeholder="Event Type" required>
+        </div>
+        ​
+        <div class="form-group">
+            <label for="Date">Date</label>
+            <input type="name" class="form-control" id="date" placeholder="this_week" required>
+        </div>
+        <!-- <div class="form-group">
+                <label for="price">free/ paid</label>
+                <input type="price" class="form-control" id="price" placeholder="free" required>
+            </div> -->
 
-    <button id="submit" type="button" class="btn btn-primary">Search</button>
+            <button id="priceBtn" type="button" class="btn btn-primary">Free</button>
 
 
-    <!-- div for displaying weather info -->
-      <!-- Retrieved data will be dumped here -->
-<div id= "cityName"></div>
-  <div id="city"></div>
-  <div id="wind"></div>
-  <div id="humidity"></div>
-  <div id="temp"></div>
+        <button id="submit" type="button" class="btn btn-primary">Search</button>
 
 
-<!-- catagory for events   use ticket master or/ and yelp -->
+        <!-- div for displaying weather info -->
+        <!-- Retrieved data will be dumped here -->
+        <div id="weatherResultsDiv">
+            <div id="cityName"></div>
+            <div id="city"></div>
+            <div id="wind"></div>
+            <div id="humidity"></div>
+            <div id="temp"></div>
+        </div>
 
-<!--div for plane tickets url ?  -->
+        <div id="eventResultsDiv"></div>
 
-<!-- div for distance api  or google maps/ map quest to go there -->
+        <div id="resturantsResultsDiv"></div>
 
-<!-- weather api in locations -->
+        <!-- catagory for events   use ticket master or/ and yelp -->
 
-<!-- bookings/ hotels on the way ? -->
+        <!--div for plane tickets url ?  -->
 
-    <script type="text/javascript" src="Assets/script.js"></script>
+        <!-- div for distance api  or google maps/ map quest to go there -->
+
+        <!-- weather api in locations -->
+
+        <!-- bookings/ hotels on the way ? -->
+
+        <script type="text/javascript" src="Assets/script.js"></script>
 
 </body>
+
 </html>
