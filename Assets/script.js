@@ -229,8 +229,6 @@ $("#priceBtn").css("background-color", "green");
 
     console.log("city is " + noSpacesCity); 
 
-
-
     // Update the URL
     var googleURL = "https://newsapi.org/v2/everything?q=" + noSpacesCity +"&sources=the-new-york-times,usa-today,abc-news&sortBy=relevancy&apiKey=963471a1dfbe44c6a4c1fa29c815655b";
 
