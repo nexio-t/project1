@@ -78,9 +78,9 @@ $(document).ready(function () {
         var newRowEB2 = $("<div>").text(eventDate);
         eventBrightResultsDiv.append(newRowEB2);
 
-        // add link to event
+        // add link to event    response.events[i].resource_uri      or response.events[i].url
 
-        // add costs
+        // add costs   cant find
 
         // add fav button
 
@@ -156,10 +156,8 @@ $(document).ready(function () {
           $("#weatherResultsDiv").append(rowForWeatherResults);
 
         }; // end of loop for response.list
-
-
       }); // end of weather api search
-  } // end of displayweather function
+  }; // end of displayweather function
 
   // on botton click change search results to free or paid only
   $("#priceBtn").on("click", function (event) {
@@ -178,7 +176,6 @@ $(document).ready(function () {
   // on btn click to display sports events in event section
   $("#ticket-master").on("click", function (event) {
     event.preventDefault();
-    // clear eventResults Div
 
     //ticket master api
     var queryUrlticketMaster = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&apikey=NtN7MU9VFD2GfjlT4c4sHG3IZgXVGQtG";
@@ -194,7 +191,7 @@ $(document).ready(function () {
       var REALticketMasterResults = $("<div>");
       for (i = 0; i < response._embedded.events.length; i++) {
         console.log(response._embedded.events[i].name);
-        var ticketMasterResults = $("<div>");
+        var ticketMasterResults = $("<div class='resultsDiv'>");
 
         var eventName = response._embedded.events[i].name;
         var newRow = $("<div>").text(eventName);
@@ -203,6 +200,32 @@ $(document).ready(function () {
         var eventDate = response._embedded.events[i].dates.start.localDate;
         var newTD1 = $("<div>").text(eventDate);
         ticketMasterResults.append(newTD1);
+
+        // but the ticket url
+        var ticketmasterURL = response._embedded.events[i].url; 
+        var newTD2 = $("<div>");
+        $(newTD2).append('<a class="yelpLink" href='+ ticketmasterURL +'target="_blank"' +'>click me for tickets!;</a>');
+        ticketMasterResults.append(newTD2);
+
+      
+
+        // event poster  response._embedded.events[i].images[3]
+        var ticketmasterPoster = response._embedded.events[i].images[3].url;
+        var newTD3 = $("<div>");
+        newTD3.append('<img class= "theImg" src="'+ticketmasterPoster+'"/>');
+        //not working proper
+        $(".theImg").css("width", "150px");
+        $(".theImg").css("height", "150px");
+        ticketMasterResults.append(newTD3);
+
+        // price range response._embedded.events[i].priceRanges[0].min  response._embedded.events[i].priceRanges[0].max
+        // console.log("cost min "+response._embedded.events[i].priceRanges[0].min);
+
+        // venue      response._embedded.events[i]._embedded.venues[0].name
+        console.log("venue name " + response._embedded.events[i]._embedded.venues[0].name);
+
+
+
 
         // add to event results div
         $(REALticketMasterResults).append(ticketMasterResults);
@@ -277,7 +300,6 @@ $(document).ready(function () {
         var yelpURL = business[i].url;
         var yelpRow3 = $("<div>");
         $(yelpRow3).append('<a class="yelpLink" href='+ yelpURL +'target="_blank"' +'>click me!;</a>');
-        $(yelpRow3).attr('target','_blank');
         yelpResultsDiv.append(yelpRow3);
         
         // price range   business[i].price
