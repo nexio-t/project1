@@ -211,7 +211,11 @@ $("#priceBtn").css("background-color", "green");
   }); // end of on sports events click
 
   // calling function to show api search
-  $(document).on("click", "#submit", displayapi);
+  $(document).on("click", "#submit", function(event) {
+    event.preventDefault();
+    
+    displayapi();
+  });
 
 
 }); // end of on load function
