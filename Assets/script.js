@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
-// change eventResultsDiv => eventsResultsDiv
-
+// make yelp api
+// move event brite to load html of eventResultsDiv, on click of botton id= "event-brite"
+// make ticket master load html of eventResultsDiv, on click of id="ticket-master"
+// try to make weather results list by day, in separate boxes
 
 
   // var for our search bbuttons
@@ -177,7 +179,7 @@ $("#priceBtn").css("background-color", "green");
   }
 })
   // on btn click to display sports events in event section
-  $("#btn-sports-events").on("click", function () {
+  $("#ticket-master").on("click", function () {
 
     //ticket master api
     var queryUrlticketMaster = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&apikey=NtN7MU9VFD2GfjlT4c4sHG3IZgXVGQtG";
@@ -216,6 +218,40 @@ $("#priceBtn").css("background-color", "green");
     
     displayapi();
   });
+
+// yelp 2nd try
+
+
+$(".search-button").on("click", function () {
+
+  var term = $(this).attr("data-term")
+  console.log(term);
+  // ajaxCall($(this).attr("data-term"));
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + term + "&location=philadelphia&radius=40000&limit=10";
+
+  $.ajax({
+      url: queryURL,
+      method: "GET",
+      headers: {
+          Authorization: "Bearer xbvcW29zavUCvrlYQUoiGodM98RsayeaJSphvNMVW8WOY8RfwMsGR7NHtsqubWZhb620AwbXXVvGZG3R-Kui783rGEtf72eWS3BuTAqTQM0DsvaT-V6ddjw8sem6XXYx",
+      },
+      dataType: 'json',
+  }).then(function (response) {
+      var business = response.businesses
+      for ( var i = 0; i < business.length; i++){
+      
+      console.log(response);
+      console.log(business[i].name);
+
+  
+
+
+      }
+
+  });
+});
+
+
 
 
 }); // end of on load function
