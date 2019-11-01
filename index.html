@@ -5,12 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Road Trip App</title>
+    <!-- css -->
+    <link rel="stylesheet" type="style/css" href="Assets/style.css">
+
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <!-- jQuery -->
+    <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Link to Moment.js should go here -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Firebase Core JavaScript Link -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <!-- Specific Firebase products we want (Database) -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
 
 <body>
+
 
     <!---insert nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,71 +59,19 @@
                     <form>
                         <div class="form-group">
                             <label for="employee-name-input">Destination</label>
-                            <input class="form-control" id="employee-name-input" placeholder="New York City" type="text">
-                            <select>
-                                    <option value="AL">Alabama</option>
-                                    <option value="AK">Alaska</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="AR">Arkansas</option>
-                                    <option value="CA">California</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="CT">Connecticut</option>
-                                    <option value="DE">Delaware</option>
-                                    <option value="DC">District Of Columbia</option>
-                                    <option value="FL">Florida</option>
-                                    <option value="GA">Georgia</option>
-                                    <option value="HI">Hawaii</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="IL">Illinois</option>
-                                    <option value="IN">Indiana</option>
-                                    <option value="IA">Iowa</option>
-                                    <option value="KS">Kansas</option>
-                                    <option value="KY">Kentucky</option>
-                                    <option value="LA">Louisiana</option>
-                                    <option value="ME">Maine</option>
-                                    <option value="MD">Maryland</option>
-                                    <option value="MA">Massachusetts</option>
-                                    <option value="MI">Michigan</option>
-                                    <option value="MN">Minnesota</option>
-                                    <option value="MS">Mississippi</option>
-                                    <option value="MO">Missouri</option>
-                                    <option value="MT">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="NH">New Hampshire</option>
-                                    <option value="NJ">New Jersey</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="NY">New York</option>
-                                    <option value="NC">North Carolina</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="OH">Ohio</option>
-                                    <option value="OK">Oklahoma</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="PA">Pennsylvania</option>
-                                    <option value="RI">Rhode Island</option>
-                                    <option value="SC">South Carolina</option>
-                                    <option value="SD">South Dakota</option>
-                                    <option value="TN">Tennessee</option>
-                                    <option value="TX">Texas</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="VT">Vermont</option>
-                                    <option value="VA">Virginia</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="WV">West Virginia</option>
-                                    <option value="WI">Wisconsin</option>
-                                    <option value="WY">Wyoming</option>
-                                </select>				
+                            <input class="form-control" id="city" placeholder="New York City" type="text">
+                            
                                         
                         </div>
                         <!--Calender Option?-->
                         <div class="form-group">
                             <label for="role-input">Dates</label>
-                            <input class="form-control" id="role-input" placeholder="Insert " type="text">
+                            <input class="form-control" id="date" placeholder="Insert " type="text">
                         </div>
                         <div class="form-group">
                                 <label for="Categoies" class="col-sm-2 control-label">Categories</label>
                                 <div class="col-sm-2">
-                                <select class="form-control selcls" id="Categoies">
+                                <select class="form-control selcls" id="eventType">
                                   <option>Music</option>
                                   <option>Film & Media</option>
                                   <option>Performing & Visual Arts</option>
@@ -123,10 +84,12 @@
                                 </div>         
                                   
                                 </div>
+                                <!-- free or paid events button -->
+                                <button id="priceBtn" class="btn btn-primary">Free</button>
                       
 
 
-                        <button class="btn btn-primary float-right" id="add-employee-btn">Search</button>
+                        <button class="btn btn-primary float-right" id="submit">Search</button>
                     </form>
 
                 </div>
@@ -137,7 +100,7 @@
 
         <div class="card-deck ml-4 mr-4">
             <div class="card" id = "foodResultsDiv">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -147,8 +110,8 @@
                     <small class="text-muted">Estimated Cost:</small>
                 </div>
             </div>
-            <div class="card" id= "eventsResultsDiv">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card" id= "eventResultsDiv">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
@@ -159,7 +122,7 @@
                 </div>
             </div>
             <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body" id = "weatherResultsDiv">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -169,10 +132,6 @@
                 
 
          
-
-
-
-  
 
                 <footer class="bg-dark text-white mt-4">
                         <div class="container-fluid py-3">
@@ -191,7 +150,7 @@
                     </footer>
         
 
-
+                    <script type="text/javascript" src="Assets/script.js"></script>
 </body>
 
 </html>
