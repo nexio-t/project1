@@ -10,9 +10,10 @@
     <link rel="stylesheet" type="style/css" href="Assets/style.css">
 
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <!-- jQuery -->
+    <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Link to Moment.js should go here -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!-- Firebase Core JavaScript Link -->
@@ -22,60 +23,134 @@
 </head>
 
 <body>
-    <h1>hello!</h1>
-    <!-- input for city, state, and date  -->
-    <form>
-        <div class="form-group">
-            <label for="city">City Name</label>
-            <input type="city" class="form-control" id="city" placeholder="City" required>
+
+
+    <!---insert nav bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Date Night</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Flight</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Hotels</a>
+                </li>
+               
+              </ul>
+            </div>
+          </nav>
+
+
+    <div class="row">
+        <div class="col-md-6 mx-auto rounded mt-2">
+            <!-- Add Trip  -->
+            <div class="card mb-4">
+                <div class="card-header">It's a Date!</div>
+                <div class="card-body">
+
+                    <!-- Entry Form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="employee-name-input">Destination</label>
+                            <input class="form-control" id="city" placeholder="New York City" type="text">
+                            
+                                        
+                        </div>
+                        <!--Calender Option?-->
+                        <div class="form-group">
+                            <label for="role-input">Dates</label>
+                            <input class="form-control" id="date" placeholder="Insert " type="text">
+                        </div>
+                        <div class="form-group">
+                                <label for="Categoies" class="col-sm-2 control-label">Categories</label>
+                                <div class="col-sm-2">
+                                <select class="form-control selcls" id="eventType">
+                                  <option>Music</option>
+                                  <option>Film & Media</option>
+                                  <option>Performing & Visual Arts</option>
+                                  <option>Sports & Fitness</option>
+                                  <option>Travel & Outdoor</option>
+                                  <option>Holiday</option>
+                                  <option>Auto, Boat & Air</option>
+                                  <option>Hobbies</option>
+                                </select> 
+                                </div>         
+                                  
+                                </div>
+                                <!-- free or paid events button -->
+                                <button id="priceBtn" type="button" class="btn btn-primary">Free</button>
+                      
+
+
+                        <button class="btn btn-primary float-right" id="add-employee-btn">Search</button>
+                    </form>
+
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="state">State Name</label>
-            <input type="state" class="form-control" id="state" placeholder="state" required>
-        </div>
-        <div class="form-group">
-            <label for="eventType">Event Type</label>
-            <input type="event" class="form-control" id="eventType" placeholder="Event Type" required>
-        </div>
-        ​
-        <div class="form-group">
-            <label for="Date">Date</label>
-            <input type="name" class="form-control" id="date" placeholder="this_week" required>
-        </div>
-        <!-- <div class="form-group">
-                <label for="price">free/ paid</label>
-                <input type="price" class="form-control" id="price" placeholder="free" required>
-            </div> -->
+    </div>
+    <div class="row">
 
-            <button id="priceBtn" type="button" class="btn btn-primary">Free</button>
+        <div class="card-deck ml-4 mr-4">
+            <div class="card" id = "foodResultsDiv">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Estimated Cost:</small>
+                </div>
+            </div>
+            <div class="card" id= "eventResultsDiv">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Estimated Cost:</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body" id = "weatherResultsDiv">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This card has even longer content than the first to show that equal height
+                        action.</p>
+                </div>
+                
 
+         
 
-        <button id="submit" type="button" class="btn btn-primary">Search</button>
-
-
-        <!-- div for displaying weather info -->
-        <!-- Retrieved data will be dumped here -->
-        <div id="weatherResultsDiv">
+                <footer class="bg-dark text-white mt-4">
+                        <div class="container-fluid py-3">
+                            <div class="row">
+                                
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">Footer </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3 text-right small align-self-end">©2019 Team 5</div>
+                            </div>
+                        </div>
+                    </footer>
         
-        </div>
 
-        <div id="eventResultsDiv"></div>
-
-        <div id="resturantsResultsDiv"></div>
-
-        <!-- catagory for events   use ticket master or/ and yelp -->
-
-        <!--div for plane tickets url ?  -->
-
-        <!-- div for distance api  or google maps/ map quest to go there -->
-
-        <!-- weather api in locations -->
-
-        <!-- bookings/ hotels on the way ? -->
-
-        <script type="text/javascript" src="Assets/script.js"></script>
-
-
+                    <script type="text/javascript" src="Assets/script.js"></script>
 </body>
 
 </html>

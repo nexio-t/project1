@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+// change eventResultsDiv => eventsResultsDiv
+
+
+
   // var for our search bbuttons
   var city = $("#city").val();
   var state = $("#state").val();
