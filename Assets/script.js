@@ -23,19 +23,16 @@ $(document).ready(function () {
     var  startDate = "2019-11-01T03%3A00%3A04Z"; 
     var  endDate = "2019-11-01T23%3A59%3A00Z";
 
-    console.log(city);
+    // console.log(city);
     
     var apiKeyEventBright = "FNOM6HESUBQXNERX2XCC";
-
-    // var queryUrlEventBright2 = "https://www.eventbriteapi.com/v3/events/search/?q=music&location.address=philadelphia&start_date.keyword=this_week&token=FNOM6HESUBQXNERX2XCC";
-
+            // check daterange 
     var queryUrlEventBright2 = "https://www.eventbriteapi.com/v3/events/search/?q="+ eventType +"&location.address="+city+"&start_date.range_start="+date+"&token=FNOM6HESUBQXNERX2XCC";
 
-    // var queryUrlEventBright3 = "https://www.eventbriteapi.com/v3/events/search/?q=music&sort_by=best&location.address=philadelphia&price=free&start_date.range_start=2019-11-01T03%3A00%3A04Z&start_date.range_end=2019-11-01T23%3A59%3A00Z&token=FNOM6HESUBQXNERX2XCC";
     var queryUrlEventBright3 = "https://www.eventbriteapi.com/v3/events/search/?q="+ eventType +"&sort_by=best&location.address="+city+"&price="+price+"&start_date.range_start="+ startDate +"&start_date.range_end="+ endDate +"&token=FNOM6HESUBQXNERX2XCC";
 
 
-    console.log(queryUrlEventBright2);
+    console.log(queryUrlEventBright3);
     $.ajax({
       url: queryUrlEventBright3,
       crossDomain: true,
@@ -53,6 +50,8 @@ $(document).ready(function () {
         console.log(response.events[i].name.text + " event name is");
         var eventBrightResultsDiv = $("<div class= 'resultsDiv'>");
         $(".resultsDiv").css("margin", "5px");
+        $(".resultsDiv").css("border-style", "double");
+
 
         // display event name
         var eventName = response.events[i].name.text;
@@ -70,7 +69,11 @@ $(document).ready(function () {
         var newRowEB2 = $("<div>").text(eventDate);
         eventBrightResultsDiv.append(newRowEB2);
 
+// add link to event
 
+// add costs
+
+// add fav button
 
 
         $("#eventResultsDiv").append(eventBrightResultsDiv);
@@ -78,19 +81,16 @@ $(document).ready(function () {
       
     });// end of event bright api search
 
-
     // start of weather api 
+    
+    var weatherAPI = "880db94beca7f4a9dc073f7b0320f24d"; 
 
-    var APIKeyWeather = "166a433c57516f51dfab1f7edaed8413";
 
     // Here we are building the URL we need to query the database
-    var queryUrlWeather = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q=" + city + "," + state + "&units=imperial&appid=" + APIKeyWeather;
+    var queryUrlWeather = "https://api.openweathermap.org/data/2.5/forecast?" +
+      "q=" + city + "," + "us" + "&appid=" +     weatherAPI;
 
-    // weather search for 5 days
-    // var queryUrlWeather = "https://api.openweathermap.org/data/2.5/forecast?q=+"+city+",us&mode=xml&appid=166a433c57516f51dfab1f7edaed8413";
 
-    // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
       url: queryUrlWeather,
       method: "GET"
@@ -98,18 +98,57 @@ $(document).ready(function () {
       .then(function (response) {
         console.log(queryUrlWeather);
         console.log(response);
+        console.log("city name "+response.city.name)
 
-        // Transfer content to HTML
-        $("#cityName").html("<h2>" + response.name + " Weather Details </h2>");
-        $("#wind").text("Wind Speed: " + response.wind.speed);
-        $("#humidity").text("Humidity: " + response.main.humidity);
-        $("#temp").text("Temperature (F) " + response.main.temp);
+        // div to hold overarching weather data
+        var rowForWeatherResults = $("<div class='resultsDiv'>");
+        
+        var weatherCityName = response.city.name;
+        var NWRow1 = $("<div>").text(weatherCityName);
+        rowForWeatherResults.append(NWRow1);
+        
+        for(i=0; i < response.list.length; i+=3){
+          console.log(response.list[i]);
 
-        // Log the data in the console as well
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + response.main.temp);
+          // date & time
+          console.log(response.list[i].dt_txt);
+          var dateTime = response.list[i].dt_txt;
+          var NWRow2 = $("<div>").text("Date & Time: " + dateTime);
+          rowForWeatherResults.append(NWRow2);
+
+          // temp min response.list[i].main.temp_min
+          console.log("min temp " + response.list[i].main.temp);
+          var temp = response.list[i].main.temp;
+          var NW3 = $("<div>").text(" Temp: " + temp);
+          rowForWeatherResults.append(NW3);
+
+          // weather (response.list[i].weather.description)
+          console.log("weather condition " + response.list[i].weather[0].description);
+          var weatherCondition = response.list[i].weather[0].description;
+          var NW4 = $("<div>").text(weatherCondition);
+          rowForWeatherResults.append(NW4);
+
+            // wind   .wind.speed
+          console.log("wind " + response.list[i].wind.speed);
+          var wind = response.list[i].wind.speed;
+          var NW5 = $("<div>").text("Wind Speed: "+wind);
+          rowForWeatherResults.append(NW5);
+
+          //humidity
+          console.log("humidity "+ response.list[i].main.humidity);
+          var humidity = response.list[i].main.humidity;
+          var NW6 = $("<div>").text("humidity: "+ humidity);
+          rowForWeatherResults.append(NW6);
+
+          
+          // add entire new div to weather results div
+          $("#weatherResultsDiv").append(rowForWeatherResults);
+          
+        }; // end of loop for response.list
+     
+
       }); // end of weather api search
+
 
 
 
