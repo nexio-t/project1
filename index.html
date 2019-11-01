@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Travel App</title>
+        <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- ============CSS============== -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="Assets/css/normalize.css">
+    <link rel="stylesheet" href="Assets/css/style.css">
  
+        <!-- jQuery -->
+    <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Link to Moment.js should go here -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Firebase Core JavaScript Link -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <!-- Specific Firebase products we want (Database) -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
 
 <body>
@@ -43,32 +53,26 @@
         <div class="col-md-6 mx-auto rounded mt-2">
             <!-- Add Trip  -->
             <div class="card mb-4">
-                <div class="card-header"></div>
+                <div class="card-header">It's a Date!</div>
                 <div class="card-body">
 
                     <!-- Entry Form -->
                     <form>
                         <div class="form-group">
-                                <label for="">Destination</label>
-                         
-                                        
-                                    
-
-                                   
-                                  </div>
+                            <label for="employee-name-input">Destination</label>
+                            <input class="form-control" id="city" placeholder="New York City" type="text">
+                            
                                         
                         </div>
-
-                    
                         <!--Calender Option?-->
-                        <label for="role-input">Dates</label>
-                        <input class="form-control" id="role-input" type="date">
-                            
+                        <div class="form-group">
+                            <label for="role-input">Dates</label>
+                            <input class="form-control" id="date" placeholder="Insert " type="text">
                         </div>
                         <div class="form-group">
                                 <label for="Categoies" class="col-sm-2 control-label">Categories</label>
                                 <div class="col-sm-2">
-                                <select class="form-control selcls" id="Categoies">
+                                <select class="form-control selcls" id="eventType">
                                   <option>Music</option>
                                   <option>Film & Media</option>
                                   <option>Performing & Visual Arts</option>
@@ -81,10 +85,14 @@
                                 </div>         
                                   
                                 </div>
+                                <!-- free or paid events button -->
                       
 
+                         
+                        <button class="btn btn-primary float-left" id="submit">All Results</button> 
+                        <button class="btn btn-primary float-left" id="priceBtn">Free Results</button>
+                      
 
-                        <button class="btn btn-primary float-right" id="add-employee-btn">Search</button>
                     </form>
 
                 </div>
@@ -95,38 +103,35 @@
 
         <div class="card-deck ml-4 mr-4">
             <div class="card" id = "foodResultsDiv">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                         additional content. This content is a little bit longer.</p>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Estimated Cost:</small>
-                </div>
+               
             </div>
-            <div class="card" id= "eventsResultsDiv">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card" id= "eventResultsDiv">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
                     </p>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Estimated Cost:</small>
-                </div>
+               
             </div>
             <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="" class="card-img-top" alt="...">
                 <div class="card-body" id = "weatherResultsDiv">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                         additional content. This card has even longer content than the first to show that equal height
                         action.</p>
                 </div>
+                </div>
                 
+             </div>
 
-         
 
 
 
@@ -149,7 +154,7 @@
                     </footer>
         
 
-
+<script type="text/javascript" src="Assets/script.js"></script>
 </body>
 
 </html>
