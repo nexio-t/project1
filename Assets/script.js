@@ -323,4 +323,67 @@ $(document).ready(function () {
   }).click()
 
 
+  //--------------------------------------Google News API Start---------------------------------------------//
+
+  $(document).on("click", "#submit", function() {
+
+    // Update this later 
+    var city = $("#city").val().trim(); 
+
+    var noSpacesCity = city.replace(" ", "%20")
+
+    console.log("city is " + noSpacesCity); 
+
+    // Update the URL
+    var googleURL = "https://newsapi.org/v2/everything?q=" + noSpacesCity +"&sources=the-new-york-times,usa-today,abc-news&sortBy=relevancy&apiKey=963471a1dfbe44c6a4c1fa29c815655b";
+
+    console.log("google news URL is " + googleURL);
+
+    $.ajax({
+        url: googleURL,
+        method: "GET"
+      }).then(function(result) {
+
+        console.log("google news" + result); 
+
+        for (var i = 0; result.length; i++) {
+
+           var title = ""; 
+           var description = "";
+           var content = ""; 
+           var articleURL = ""; 
+
+          //  var imageArea = $("<div></div>"); 
+
+          //  imageArea.addClass("img-div");
+
+          //  var imageDiv = $("<img>").attr("src", dataStill); 
+
+          //  imageDiv.addClass("click-area"); 
+
+          //  imageDiv.attr("data-state", "still"); 
+
+          //  imageDiv.attr("data-still", dataStill);
+
+          //  imageDiv.attr("data-animate", dataAnimate);
+
+          //  $(imageArea).append(imageDiv); 
+
+          //  $(imageArea).append("<p>Rating: " + rating + "</p>"); 
+
+          //  $(".gif-area").append(imageArea);
+
+           // on click for class of sports 
+           
+        };
+        
+      });
+
+});
+
+
+
+  //--------------------------------------Google News API End---------------------------------------------//
+
+
 }); // end of on load function
