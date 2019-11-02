@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
-  // make yelp api
-  // move event brite to load html of eventResultsDiv, on click of botton id= "event-brite"
-  // make ticket master load html of eventResultsDiv, on click of id="ticket-master"
+
   // try to make weather results list by day, in separate boxes
 
 
