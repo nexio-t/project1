@@ -204,9 +204,6 @@ $("#priceBtn").css("background-color", "green");
         $("#eventResults").html(newRow);
       }
 
-
-
-
     });// end of ticket master api search
   }); // end of on sports events click
 
@@ -241,9 +238,23 @@ $("#priceBtn").css("background-color", "green");
 
         console.log("google news" + result); 
 
+        console.log(result.articles[0].title);
+        console.log(result.articles[0].publishedAt.substring(0,10));
+
+
+        var title = ""; 
+        
+        var newDateFormat = result.articles[i].publishedAt.substring(0,10);
+        var date = moment(newDateFormat, "YYYY-MM-DD").format("MMM Do YYYY");
+
+        console.log(result.articles[0].description);
+
+
         for (var i = 0; result.length; i++) {
 
-           var title = ""; 
+           
+
+           
            var description = "";
            var content = ""; 
            var articleURL = ""; 
@@ -275,8 +286,6 @@ $("#priceBtn").css("background-color", "green");
       });
 
 });
-
-
 
   //--------------------------------------Google News API End---------------------------------------------//
 
