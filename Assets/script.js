@@ -236,28 +236,21 @@ $("#priceBtn").css("background-color", "green");
         method: "GET"
       }).then(function(result) {
 
-        console.log("google news" + result); 
-
-        console.log(result.articles[0].title);
-        console.log(result.articles[0].publishedAt.substring(0,10));
-
-
-        var title = ""; 
         
-        var newDateFormat = result.articles[i].publishedAt.substring(0,10);
-        var date = moment(newDateFormat, "YYYY-MM-DD").format("MMM Do YYYY");
+        for (var i = 0; i < 5; i++) {
 
-        console.log(result.articles[0].description);
+          var title = result.articles[i].title; 
+          var newDateFormat = result.articles[i].publishedAt.substring(0,10);
+          var date = moment(newDateFormat, "YYYY-MM-DD").format("MMM Do YYYY");
+          var description = result.articles[i].description;
+          var url = result.articles[i].url; 
 
+          console.log(title);
+          console.log(date);
+          console.log(description);
+          console.log(url);
 
-        for (var i = 0; result.length; i++) {
-
-           
-
-           
-           var description = "";
-           var content = ""; 
-           var articleURL = ""; 
+  
 
           //  var imageArea = $("<div></div>"); 
 
