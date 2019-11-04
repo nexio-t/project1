@@ -242,15 +242,38 @@ $("#priceBtn").css("background-color", "green");
           var title = result.articles[i].title; 
           var newDateFormat = result.articles[i].publishedAt.substring(0,10);
           var date = moment(newDateFormat, "YYYY-MM-DD").format("MMM Do YYYY");
+          var source = result.articles[i].source[1]; 
           var description = result.articles[i].description;
           var url = result.articles[i].url; 
 
+          console.log($(result.articles[0].source.name)); 
           console.log(title);
           console.log(date);
           console.log(description);
           console.log(url);
 
-  
+          // div with News card
+          var newsDiv = $(".news-section");
+
+          var newItemCard = $("<div class='card news-card'></div>")
+
+          var titleHeader = $("<h5>"+ title + "</h5>");
+
+          var articleSource = $("<p>" + source + "</p>");
+
+          var articleDate = $("<p>" + date + "</p>");
+
+          var articleDesc = $("<p>" + description + "</p>");
+
+          var urlButton = $("<a href='" + url + "' target='_blank' class='btn btn-primary'>"  + "Read Article" + "</a>");  
+
+          newItemCard.append(titleHeader);
+          newItemCard.append(articleSource);
+          newItemCard.append(articleDate);
+          newItemCard.append(articleDesc);
+          newItemCard.append(urlButton);
+
+          newsDiv.append(newItemCard);
 
           //  var imageArea = $("<div></div>"); 
 
