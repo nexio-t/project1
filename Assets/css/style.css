@@ -1,0 +1,20 @@
+body{
+  background: url(../images/background.jpg) no-repeat center center fixed; 
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.resultsDiv{
+  margin: 5px;
+  border-style: double;
+  }
+  .theImg{
+    height: 150px;
+    width: 150px;
+  }
