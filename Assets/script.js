@@ -136,6 +136,8 @@ $(document).ready(function () {
         var NWRow1 = $("<div>").text("Weather Results for " + weatherCityName);
         $("#weatherResultsDiv").prepend(NWRow1);
 
+        var existingDate = []; 
+
         for (i = 0; i < response.list.length; i += 3) {
           // div to hold overarching weather data
           var rowForWeatherResults = $("<div class='resultsDiv'>");
@@ -143,14 +145,23 @@ $(document).ready(function () {
           // card div to hold weather data 
           var weatherCard = $("<div class='card weather-card'></div>")
 
-          console.log(response.list[i]);
-
           // date & time
-          console.log(response.list[i].dt_txt);
-          var dateTime = response.list[i].dt_txt;
-          var NWRow2 = $("<div>").text("Date & Time: " + dateTime);
+          var originalDateFormat = response.list[i].dt_txt.substring(0,10);
+          var hourFormat = response.list[i].dt_txt.substring(11,16); 
 
-          // rowForWeatherResults.append(NWRow2);
+          // convert raw date into readable date and hour 
+          var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("MMM Do YYYY"); 
+          var convertedTime = moment(hourFormat, "HH:mm").format("hh:mm A"); 
+
+          // create variable to save date and time in HTML 
+          var NWRow2 = $("<h5>").text(newDateFormat);
+          var NW3Time = $("<h6>").text(convertedTime); 
+       
+        
+
+
+          // if the date is not already contained then, display 
+
 
           // temp min response.list[i].main.temp_min
           console.log("min temp " + response.list[i].main.temp);
@@ -161,7 +172,7 @@ $(document).ready(function () {
           // weather (response.list[i].weather.description)
           console.log("weather condition " + response.list[i].weather[0].description);
           var weatherCondition = response.list[i].weather[0].description;
-          var NW4 = $("<div>").text(weatherCondition);
+          var NW4 = $("<div>").text(weatherCondition)
           // rowForWeatherResults.append(NW4);
 
           // wind   .wind.speed
@@ -176,7 +187,17 @@ $(document).ready(function () {
           var NW6 = $("<div>").text("humidity: " + humidity);
           // rowForWeatherResults.append(NW6);
 
-          weatherCard.append(NWRow2);
+          console.log(existingDate.includes(originalDateFormat));
+
+          if (existingDate.includes(originalDateFormat) == false) {
+            weatherCard.append(NWRow2);
+          };
+
+          // push each date to the existind date array 
+          existingDate.push(originalDateFormat); 
+          console.log(existingDate); 
+          
+          weatherCard.append(NW3Time);  
           weatherCard.append(NW3); 
           weatherCard.append(NW4);
           weatherCard.append(NW5);
