@@ -140,6 +140,8 @@ $(document).ready(function () {
           // div to hold overarching weather data
           var rowForWeatherResults = $("<div class='resultsDiv'>");
 
+          // card div to hold weather data 
+          var weatherCard = $("<div class='card weather-card'></div>")
 
           console.log(response.list[i]);
 
@@ -147,35 +149,41 @@ $(document).ready(function () {
           console.log(response.list[i].dt_txt);
           var dateTime = response.list[i].dt_txt;
           var NWRow2 = $("<div>").text("Date & Time: " + dateTime);
-          rowForWeatherResults.append(NWRow2);
+
+          // rowForWeatherResults.append(NWRow2);
 
           // temp min response.list[i].main.temp_min
           console.log("min temp " + response.list[i].main.temp);
           var temp = response.list[i].main.temp;
           var NW3 = $("<div>").text(" Temp: " + temp);
-          rowForWeatherResults.append(NW3);
+          // rowForWeatherResults.append(NW3);
 
           // weather (response.list[i].weather.description)
           console.log("weather condition " + response.list[i].weather[0].description);
           var weatherCondition = response.list[i].weather[0].description;
           var NW4 = $("<div>").text(weatherCondition);
-          rowForWeatherResults.append(NW4);
+          // rowForWeatherResults.append(NW4);
 
           // wind   .wind.speed
           console.log("wind " + response.list[i].wind.speed);
           var wind = response.list[i].wind.speed;
           var NW5 = $("<div>").text("Wind Speed: " + wind);
-          rowForWeatherResults.append(NW5);
+          // rowForWeatherResults.append(NW5);
 
           //humidity
           console.log("humidity " + response.list[i].main.humidity);
           var humidity = response.list[i].main.humidity;
           var NW6 = $("<div>").text("humidity: " + humidity);
-          rowForWeatherResults.append(NW6);
+          // rowForWeatherResults.append(NW6);
 
+          weatherCard.append(NWRow2);
+          weatherCard.append(NW3); 
+          weatherCard.append(NW4);
+          weatherCard.append(NW5);
+          weatherCard.append(NW6); 
 
           // add entire new div to weather results div
-          $("#weatherResultsDiv").append(rowForWeatherResults);
+          $("#weatherResultsDiv").append(weatherCard);
 
         }; // end of loop for response.list
       }); // end of weather api search
@@ -382,28 +390,6 @@ $(document).ready(function () {
           newItemCard.append(urlButton);
 
           newsDiv.append(newItemCard);
-
-        //  var imageArea = $("<div></div>"); 
-
-        //  imageArea.addClass("img-div");
-
-        //  var imageDiv = $("<img>").attr("src", dataStill); 
-
-        //  imageDiv.addClass("click-area"); 
-
-        //  imageDiv.attr("data-state", "still"); 
-
-        //  imageDiv.attr("data-still", dataStill);
-
-        //  imageDiv.attr("data-animate", dataAnimate);
-
-        //  $(imageArea).append(imageDiv); 
-
-        //  $(imageArea).append("<p>Rating: " + rating + "</p>"); 
-
-        //  $(".gif-area").append(imageArea);
-
-        // on click for class of sports 
 
       };
 
