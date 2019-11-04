@@ -1,9 +1,6 @@
 $(document).ready(function () {
 
-
   // try to make weather results list by day, in separate boxes
-
-
 
   // var for our search bbuttons
   var city = $("#city").val();
@@ -159,6 +156,7 @@ $(document).ready(function () {
           console.log("min temp " + response.list[i].main.temp);
           var temp = response.list[i].main.temp;
           console.log(temp); 
+
           function temperatureConverter(valNum) {
             valNum = parseFloat(valNum);
             document.getElementById("outputFahrenheit").innerHTML=((valNum-273.15)*1.8)+32;
