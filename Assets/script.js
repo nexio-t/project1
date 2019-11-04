@@ -42,6 +42,7 @@ $(document).ready(function () {
         var existingDate = []; 
 
         for (i = 0; i < response.list.length; i += 3) {
+
           // div to hold overarching weather data
           var rowForWeatherResults = $("<div class='resultsDiv'>");
 
@@ -53,17 +54,15 @@ $(document).ready(function () {
           var hourFormat = response.list[i].dt_txt.substring(11,16); 
 
           // convert raw date into readable date and hour 
-          var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("MMM Do YYYY"); 
+          var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("LL"); 
           var convertedTime = moment(hourFormat, "HH:mm").format("hh:mm A"); 
 
           // create variable to save date and time in HTML 
-          var NWRow2 = $("<h5>").text(newDateFormat);
-          var NW3Time = $("<h6>").text(convertedTime); 
+          var NWRow2 = $("<h5 class=date-header>").text(newDateFormat);
+          var NW3Time = $("<h6 class=hour-header>").text(convertedTime); 
       
-          // temp min response.list[i].main.temp_min
-          console.log("min temp " + response.list[i].main.temp);
+          // variable to store temperature 
           var temp = response.list[i].main.temp;
-          console.log(temp); 
 
           var convertedTemp; 
 
@@ -77,37 +76,36 @@ $(document).ready(function () {
 
           console.log(newTemp); 
 
-          var NW3 = $("<div>").text(" Temp: " + newTemp);
+          var NW3 = $("<div class=weather-data>").text("Temperature: " + newTemp + "F");
           rowForWeatherResults.append(NW3);
           
-          // weather (response.list[i].weather.description)
-          console.log("weather condition " + response.list[i].weather[0].description);
-          var weatherCondition = response.list[i].weather[0].description;
-          var NW4 = $("<div>").text(weatherCondition);
+          // variable to store current conditions 
+          var weatherCondition = response.list[i].weather[0].main;
+          var NW4 = $("<div class=weather-data>").text("Conditions: "+ weatherCondition);
           rowForWeatherResults.append(NW4);
           
-          // wind   .wind.speed
-          console.log("wind " + response.list[i].wind.speed);
+          // variable to store wind
           var wind = response.list[i].wind.speed;
-          var NW5 = $("<div>").text("Wind Speed: " + wind);
+          var newWind = Math.round((wind *3600 / 1610.3*1000) / 1000);
+          var NW5 = $("<div class=weather-data>").text("Wind: " + newWind + " mph");
           rowForWeatherResults.append(NW5);
           
-          //humidity
-          console.log("humidity " + response.list[i].main.humidity);
+          // variable to store humidity 
           var humidity = response.list[i].main.humidity;
-          var NW6 = $("<div>").text("humidity: " + humidity);
-          // rowForWeatherResults.append(NW6);
+          var NW6 = $("<div class=weather-data>").text("Humidity: " + humidity + "%");
+          rowForWeatherResults.append(NW6);
 
-          console.log(existingDate.includes(originalDateFormat));
-
+          
+          // conditional to avoid displaying same date twice 
           if (existingDate.includes(originalDateFormat) == false) {
             weatherCard.append(NWRow2);
           };
 
-          // push each date to the existind date array 
+          // push each date to the existing date array 
           existingDate.push(originalDateFormat); 
           console.log(existingDate); 
-          
+
+          // append each piece of weather data to the weather card 
           weatherCard.append(NW3Time);  
           weatherCard.append(NW3); 
           weatherCard.append(NW4);
@@ -143,7 +141,7 @@ $(document).ready(function () {
         var REALticketMasterResults = $("<div class='resultsDiv'>");
         for (i = 0; i < response._embedded.events.length; i++) {
           console.log(response._embedded.events[i].name);
-          var ticketMasterResults = $("<div class='resultsDiv'>");
+          var ticketMasterResults = $("<div class='card resultsDiv'>");
           
           var eventName = response._embedded.events[i].name;
           var newRow = $("<div>").text(eventName);
@@ -291,7 +289,7 @@ $(document).ready(function () {
             
             var title = result.articles[i].title;
             var newDateFormat = result.articles[i].publishedAt.substring(0, 10);
-            var date = moment(newDateFormat, "YYYY-MM-DD").format("MMM Do YYYY");
+            var date = moment(newDateFormat, "YYYY-MM-DD").format("LL");
             var source = result.articles[i].source[1];
             var description = result.articles[i].description;
             var url = result.articles[i].url;

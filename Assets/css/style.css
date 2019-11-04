@@ -18,3 +18,31 @@ footer {
     height: 150px;
     width: 150px;
   }
+
+  .weather-card {
+    border: 0 !important; 
+    padding-bottom: 10px; 
+    background: rgba(211, 211, 211, 0.452); 
+    margin-bottom: 10px; 
+  }
+
+  .date-header {
+    background: darkblue;
+    color: white; 
+    margin-bottom: 0 !important; 
+    padding-left: 4px; 
+    padding-bottom: 2px; 
+    padding-top: 2px; 
+  }
+
+  .hour-header {
+    background: lightblue; 
+    padding-left: 4px; 
+    padding-bottom: 2px; 
+    padding-top: 2px; 
+  }
+
+  .weather-data {
+    font-size: 9pt; 
+    padding-left: 4px; 
+  }
