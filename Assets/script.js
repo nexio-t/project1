@@ -121,8 +121,6 @@ $(document).ready(function () {
     // Here we are building the URL we need to query the database
     var queryUrlWeather = "https://api.openweathermap.org/data/2.5/forecast?" +
       "q=" + city + "," + "us" + "&appid=" + weatherAPI;
-
-
     $.ajax({
       url: queryUrlWeather,
       method: "GET"
@@ -156,16 +154,21 @@ $(document).ready(function () {
           // create variable to save date and time in HTML 
           var NWRow2 = $("<h5>").text(newDateFormat);
           var NW3Time = $("<h6>").text(convertedTime); 
-       
-        
-
-
-          // if the date is not already contained then, display 
-
-
+      
           // temp min response.list[i].main.temp_min
           console.log("min temp " + response.list[i].main.temp);
           var temp = response.list[i].main.temp;
+          console.log(temp); 
+          function temperatureConverter(valNum) {
+            valNum = parseFloat(valNum);
+            document.getElementById("outputFahrenheit").innerHTML=((valNum-273.15)*1.8)+32;
+          }
+
+          var newTemp = temperatureConverter(temp); 
+
+          console.log(temp); 
+
+
           var NW3 = $("<div>").text(" Temp: " + temp);
           // rowForWeatherResults.append(NW3);
 
