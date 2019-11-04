@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Travel App</title>
+    <title>Info Event</title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,7 +28,7 @@
 
     <!--***********************HEADER NAVIGATION**************************** -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Homepage</a>
+        <a class="navbar-brand" href="#">Info Event</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,78 +37,144 @@
     </nav>
 
     <!-- ****************************SEARCH BOX******************************** -->
-    <div class="row">
+
         <div class="col-md-6 mx-auto rounded mt-2">
             <!-- Add Trip  -->
             <div class="card mb-4">
-                <div class="card-header">What to do anywhere</div>
+                <div class="card-header"></div>
                 <div class="card-body">
-
-                    <!-- Entry Form -->
-                    <form>
-                        <div class="form-group">
-                            <label for="destination-input">Destination</label>
-                            <input class="form-control" id="city" placeholder="New York City" type="text">
-                        </div>
-                        <!--Calender Option?-->
-                        <div class="form-group">
-                            <label for="role-input">Date</label>
-                            <input class="form-control" id="date" type="date">
-                        </div>
-
-                        <label for="Categories">Categories</label>
-                        <select class="form-control selcls" id="eventType">
-                            <option>Music</option>
-                            <option>Film & Media</option>
-                            <option>Performing & Visual Arts</option>
-                            <option>Sports & Fitness</option>
-                            <option>Travel & Outdoor</option>
-                            <option>Holiday</option>
-                            <option>Auto, Boat & Air</option>
-                            <option>Hobbies</option>
-                        </select>
-
-                        <!-- free or paid events button -->
-                        <div class="buttons events">
-                            <button class="btn btn-primary" id="event-brite">Event Brite </button>
-                            <button class="btn btn-primary" id="ticket-master">Ticket Master</button>
-                            <button class="btn btn-primary" id="priceBtn">Free Results</button>    
-                        </div>
-                        <button class="btn btn-primary" id="submit">Submit</button>
+    
+                    <div>
+                            <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                      <label for="inputCity">City</label>
+                                      <input type="text" class="form-control" id="inputCity">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                      <label for="inputState">State</label>
+                                      <select id="inputState" class="form-control">
+                                        <option selected>Choose...</option>
+                                        <option value="AL">AL</option>
+                                        <option value="AK">AK</option>
+                                        <option value="AR">AR</option>	
+                                        <option value="AZ">AZ</option>
+                                        <option value="CA">CA</option>
+                                        <option value="CO">CO</option>
+                                        <option value="CT">CT</option>
+                                        <option value="DC">DC</option>
+                                        <option value="DE">DE</option>
+                                        <option value="FL">FL</option>
+                                        <option value="GA">GA</option>
+                                        <option value="HI">HI</option>
+                                        <option value="IA">IA</option>	
+                                        <option value="ID">ID</option>
+                                        <option value="IL">IL</option>
+                                        <option value="IN">IN</option>
+                                        <option value="KS">KS</option>
+                                        <option value="KY">KY</option>
+                                        <option value="LA">LA</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MD">MD</option>
+                                        <option value="ME">ME</option>
+                                        <option value="MI">MI</option>
+                                        <option value="MN">MN</option>
+                                        <option value="MO">MO</option>	
+                                        <option value="MS">MS</option>
+                                        <option value="MT">MT</option>
+                                        <option value="NC">NC</option>	
+                                        <option value="NE">NE</option>
+                                        <option value="NH">NH</option>
+                                        <option value="NJ">NJ</option>
+                                        <option value="NM">NM</option>			
+                                        <option value="NV">NV</option>
+                                        <option value="NY">NY</option>
+                                        <option value="ND">ND</option>
+                                        <option value="OH">OH</option>
+                                        <option value="OK">OK</option>
+                                        <option value="OR">OR</option>
+                                        <option value="PA">PA</option>
+                                        <option value="RI">RI</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SD">SD</option>
+                                        <option value="TN">TN</option>
+                                        <option value="TX">TX</option>
+                                        <option value="UT">UT</option>
+                                        <option value="VT">VT</option>
+                                        <option value="VA">VA</option>
+                                        <option value="WA">WA</option>
+                                        <option value="WI">WI</option>	
+                                        <option value="WV">WV</option>
+                                        <option value="WY">WY</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                            <label for="Categories">Categories</label>
+                                            <select class="form-control selcls" id="eventType">
+                                                <option>Music</option>
+                                                <option>Film & Media</option>
+                                                <option>Performing & Visual Arts</option>
+                                                <option>Sports & Fitness</option>
+                                                <option>Travel & Outdoor</option>
+                                                <option>Holiday</option>
+                                                <option>Auto, Boat & Air</option>
+                                                <option>Hobbies</option>
+                                            </select>
+                                        </div>
+                                    <!-- <div class="form-group col-md-4">
+                                        <label for="role-input">Date</label>
+                                        <input class="form-control" id="date" type="date">
+                                    </div> -->
+                                 
+                                   
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <input type="checkbox" id="event-brite">Event Brite </input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="checkbox" id="ticket-master">Ticket Master</input>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="checkbox" id="priceBtn">Free Results</input>
+                                        </div>
+                                        <div class="form-group col-md-4 offset-4">
+                                            <button class="btn btn-primary" id="submit">Submit</button>
+                                        </div>
+                                    </div>
+                        </div>            
                     </form>
                    
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="row">
     <!-- ****************Events Card ****************** -->
+    <div class="col-md-4">
     <div class="card" >
-            <img src="" class="card-img-top" alt="...">
-            <div class="card-body" id="eventResultsDiv">
-                <h5 class="card-title">Events</h5>
-                <p class="card-text"></p>
-            </div>
+           
+            <div class="card-body" >
+                <h4 class="card-title">Events</h4>
+              <div id="eventResultsDiv" ></div>
 
+            </div>
         </div>
-     
+    </div>    
             
 
-    <!-- ****************WEATHER CARD ****************** -->        
-
-   
-            <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body" id="weatherResultsDiv">
+    <!-- ****************WEATHER CARD ****************** -->  
+    <div class="col-md-4">   
+           <div class="card">
+                  
+                    <div class="card-body" >
                         <h5 class="card-title">Weather</h5>
-                        <p class="card-text"></p>
+                        <div id="weatherResultsDiv"></div>
                     </div>
                 </div>
-
+            </div>  
           <!-- ****************NEWS CARD ****************** -->   
-         
+         <div class="col-md-4">
             <div class="card">
-                    <img src="" class="card-img-top" alt="...">
+        
                     <div class="card-body" id="newsResultsDiv">
                         <h5 class="card-title">News</h5>
                         <p class="card-text"></p>
@@ -116,9 +182,12 @@
     
                 </div>
         </div>
-        <footer>
-            <p>©2019 Team 5</p>
+    </div>
+    <div class="row">
+        <footer class="col-md-12">
+            <p>©2019 Info Event</p>
         </footer>
+    </div>    
 
 
         <script type="text/javascript" src="Assets/script.js"></script>
