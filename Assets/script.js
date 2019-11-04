@@ -16,8 +16,6 @@ $(document).ready(function () {
   var eventType = $("#eventType").val();
 
 
-  
-  
   // ************************* WEATHER API ***********************************
   
   function displayweather() {
@@ -67,16 +65,19 @@ $(document).ready(function () {
           var temp = response.list[i].main.temp;
           console.log(temp); 
 
-          // function temperatureConverter(valNum) {
-          //   valNum = parseFloat(valNum);
-          //   document.getElementById("outputFahrenheit").innerHTML=((valNum-273.15)*1.8)+32;
-          // }
+          var convertedTemp; 
 
-          // var newTemp = temperatureConverter(temp); 
+          function temperatureConverter(valNum) {
+            valNum = parseFloat(valNum);
+            convertedTemp = ((valNum-273.15)*1.8)+32; 
+            return Math.round(convertedTemp); 
+          }; 
 
-          console.log(temp); 
+          var newTemp = temperatureConverter(temp); 
 
-          var NW3 = $("<div>").text(" Temp: " + temp);
+          console.log(newTemp); 
+
+          var NW3 = $("<div>").text(" Temp: " + newTemp);
           rowForWeatherResults.append(NW3);
           
           // weather (response.list[i].weather.description)
