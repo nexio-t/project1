@@ -28,7 +28,6 @@ $(document).ready(function () {
     var queryUrlWeather = "https://api.openweathermap.org/data/2.5/forecast?" +
     "q=" + city + "," + "us" + "&appid=" + weatherAPI;
     
-    
     $.ajax({
       url: queryUrlWeather,
       method: "GET"
@@ -41,23 +40,42 @@ $(document).ready(function () {
         var weatherCityName = response.city.name;
         var NWRow1 = $("<div>").text("Weather Results for " + weatherCityName);
         $("#weatherResultsDiv").prepend(NWRow1);
-        
+
+        var existingDate = []; 
+
         for (i = 0; i < response.list.length; i += 3) {
           // div to hold overarching weather data
           var rowForWeatherResults = $("<div class='resultsDiv'>");
-          
-          
-          console.log(response.list[i]);
-          
+
+          // card div to hold weather data 
+          var weatherCard = $("<div class='card weather-card'></div>")
+
           // date & time
-          console.log(response.list[i].dt_txt);
-          var dateTime = response.list[i].dt_txt;
-          var NWRow2 = $("<div>").text("Date & Time: " + dateTime);
-          rowForWeatherResults.append(NWRow2);
-          
+          var originalDateFormat = response.list[i].dt_txt.substring(0,10);
+          var hourFormat = response.list[i].dt_txt.substring(11,16); 
+
+          // convert raw date into readable date and hour 
+          var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("MMM Do YYYY"); 
+          var convertedTime = moment(hourFormat, "HH:mm").format("hh:mm A"); 
+
+          // create variable to save date and time in HTML 
+          var NWRow2 = $("<h5>").text(newDateFormat);
+          var NW3Time = $("<h6>").text(convertedTime); 
+      
           // temp min response.list[i].main.temp_min
           console.log("min temp " + response.list[i].main.temp);
           var temp = response.list[i].main.temp;
+          console.log(temp); 
+
+          // function temperatureConverter(valNum) {
+          //   valNum = parseFloat(valNum);
+          //   document.getElementById("outputFahrenheit").innerHTML=((valNum-273.15)*1.8)+32;
+          // }
+
+          // var newTemp = temperatureConverter(temp); 
+
+          console.log(temp); 
+
           var NW3 = $("<div>").text(" Temp: " + temp);
           rowForWeatherResults.append(NW3);
           
@@ -77,12 +95,27 @@ $(document).ready(function () {
           console.log("humidity " + response.list[i].main.humidity);
           var humidity = response.list[i].main.humidity;
           var NW6 = $("<div>").text("humidity: " + humidity);
-          rowForWeatherResults.append(NW6);
+          // rowForWeatherResults.append(NW6);
+
+          console.log(existingDate.includes(originalDateFormat));
+
+          if (existingDate.includes(originalDateFormat) == false) {
+            weatherCard.append(NWRow2);
+          };
+
+          // push each date to the existind date array 
+          existingDate.push(originalDateFormat); 
+          console.log(existingDate); 
           
-          
+          weatherCard.append(NW3Time);  
+          weatherCard.append(NW3); 
+          weatherCard.append(NW4);
+          weatherCard.append(NW5);
+          weatherCard.append(NW6); 
+
           // add entire new div to weather results div
-          $("#weatherResultsDiv").append(rowForWeatherResults);
-          
+          $("#weatherResultsDiv").append(weatherCard);
+
         }; // end of loop for response.list
       }); // end of weather api search
     }; // end of displayweather function
@@ -180,7 +213,7 @@ $(document).ready(function () {
           console.log(queryYelpURL);
           console.log(response);
           
-          var yelpResultsDiv = $("<div class= 'resultsDiv'>");
+          var yelpResultsDiv = $("<div class= 'card resultsDiv'>");
           $(".resultsDiv").css("margin", "5px");
           $(".resultsDiv").css("border-style", "double");
           
@@ -204,7 +237,7 @@ $(document).ready(function () {
           console.log("url " + business[i].url);
           var yelpURL = business[i].url;
           var yelpRow3 = $("<div>");
-          $(yelpRow3).append('<a class="yelpLink" href=' + yelpURL + 'target="_blank"' + '>click me!;</a>');
+          $(yelpRow3).append('<a class="yelpLink" href="' + yelpURL + '"target="_blank"' + '>click me!;</a>');
           yelpResultsDiv.append(yelpRow3);
           
           // price range   business[i].price
