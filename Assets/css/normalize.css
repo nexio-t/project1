@@ -347,4 +347,13 @@
   [hidden] {
     display: none;
   }
+
+.resultsDiv{
+margin: 5px;
+border-style: double;
+}
+.theImg{
+  height: 150px;
+  width: 150px;
+}
   

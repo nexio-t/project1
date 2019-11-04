@@ -65,7 +65,7 @@
                 />
               </div>
               <!--Calender Option?-->
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="role-input">Date</label>
                 <input class="form-control" id="date" type="date" />
               </div>
@@ -80,23 +80,18 @@
                 <option>Holiday</option>
                 <option>Auto, Boat & Air</option>
                 <option>Hobbies</option>
-              </select>
+              </select> -->
 
               <!-- free or paid events button -->
               <div class="buttons events">
-                <button class="btn btn-primary" id="event-brite">
-                  Event Brite
-                </button>
-                <button class="btn btn-primary" id="ticket-master">
-                  Ticket Master
-                </button>
-                <button class="btn btn-primary" id="business">Local Business's </button>
-
-                <button class="btn btn-primary" id="priceBtn">
-                  Free Results
-                </button>
+    
+                <button type="button" class="btn btn-primary" id="ticket-master">Sports</button>
+                <button type="button" class="btn btn-primary" id="food">food </button>
+                <button type="button" class="btn btn-primary" id="events">events </button>
+                <button type="button" class="btn btn-primary" id="music">music </button>
+                <button type="button" class="btn btn-primary" id="animals">animals </button>
+                
               </div>
-              <button class="btn btn-primary" id="submit">Submit</button>
             </form>
           </div>
         </div>
@@ -108,8 +103,9 @@
     <div class="row">
       <div class="card col-md-4">
       
-        <div class="card-body" id="eventResultsDiv">
+        <div class="card-body">
           <h5 class="card-title">Events</h5>
+          <div id="eventResultsDiv"></div>
           <p class="card-text"></p>
         </div>
       </div>
@@ -118,8 +114,9 @@
 
       <div class="card col-md-4">
       
-        <div class="card-body" id="weatherResultsDiv">
+        <div class="card-body">
           <h5 class="card-title">Weather</h5>
+            <div id ="weatherResultsDiv"></div>
           <p class="card-text"></p>
         </div>
       </div>
