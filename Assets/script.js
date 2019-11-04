@@ -232,8 +232,9 @@ $(document).ready(function () {
     
     // $(document).on("click", "#submit", function () {
       function displayNewsApi(){
-        $(".news-section").empty();
         event.preventDefault();
+        $("#newsResultsDiv").empty();
+        console.log("display news api")
         // Update this later 
         var city = $("#city").val().trim();
         
@@ -268,7 +269,7 @@ $(document).ready(function () {
             console.log(url);
             
             // div with News card
-            var newsDiv = $(".news-section");
+            var newsDiv = $("#newsResultsDiv");
             
             var newItemCard = $("<div class='card news-card'></div>")
             
@@ -289,6 +290,7 @@ $(document).ready(function () {
             newItemCard.append(urlButton);
             
             newsDiv.append(newItemCard);
+            
             
             //  var imageArea = $("<div></div>"); 
             
