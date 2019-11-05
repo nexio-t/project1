@@ -22,27 +22,66 @@ footer {
   .weather-card {
     border: 0 !important; 
     padding-bottom: 10px; 
-    background: rgba(211, 211, 211, 0.452); 
+    background: #f6f6f6; 
     margin-bottom: 10px; 
   }
 
   .date-header {
-    background: darkblue;
+    background: #44a6c6;
     color: white; 
     margin-bottom: 0 !important; 
     padding-left: 4px; 
     padding-bottom: 2px; 
     padding-top: 2px; 
+    font-size: 12pt !important; 
   }
 
   .hour-header {
-    background: lightblue; 
+    background: rgba(173, 216, 230, 0.651); 
     padding-left: 4px; 
     padding-bottom: 2px; 
     padding-top: 2px; 
+    font-size: 11pt !important; 
   }
 
   .weather-data {
     font-size: 9pt; 
     padding-left: 4px; 
+  }
+
+  .news-card {
+    border: 0 !important; 
+    padding-bottom: 10px; 
+    background: #e9e9e9d2; 
+    margin-bottom: 15px; 
+  }
+
+  .news-title {
+    margin-left: 4px; 
+    margin-top: 4px; 
+  }
+
+  .news-date {
+    margin-left: 4px; 
+    color: rgb(119, 115, 115) !important;
+    font-size: 11pt; 
+  }
+
+  .news-desc {
+    margin-left: 4px; 
+    color: rgb(119, 115, 115) !important;
+    font-size: 11pt; 
+  }
+
+  .article-btn {
+    width: 40%; 
+    margin-left: 4px; 
+  }
+
+  p.news-date {
+    margin-bottom: 4px !important; 
+  }
+
+  p.news-desc {
+    margin-bottom: 4px !important; 
   }

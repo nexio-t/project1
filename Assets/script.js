@@ -36,8 +36,8 @@ $(document).ready(function () {
         console.log("city name " + response.city.name)
         
         var weatherCityName = response.city.name;
-        var NWRow1 = $("<div>").text("Weather Results for " + weatherCityName);
-        $("#weatherResultsDiv").prepend(NWRow1);
+        $(".city-name").append(weatherCityName + " ");
+        // $("#weatherResultsDiv").prepend(NWRow1);
 
         var existingDate = []; 
 
@@ -305,18 +305,18 @@ $(document).ready(function () {
             
             var newItemCard = $("<div class='card news-card'></div>")
             
-            var titleHeader = $("<h5>" + title + "</h5>");
+            var titleHeader = $("<h5 class=news-title>" + title + "</h5>");
             
-            var articleSource = $("<p>" + source + "</p>");
+            // var articleSource = $("<p>" + source + "</p>");
             
-            var articleDate = $("<p>" + date + "</p>");
+            var articleDate = $("<p class=news-date>" + date + "</p>");
             
-            var articleDesc = $("<p>" + description + "</p>");
+            var articleDesc = $("<p class=news-desc>" + description + "</p>");
             
-            var urlButton = $("<a href='" + url + "' target='_blank' class='btn btn-primary'>" + "Read Article" + "</a>");
+            var urlButton = $("<a href='" + url + "' target='_blank' class='article-btn btn btn-outline-primary btn-sm'>" + "Read Article" + "</a>");
             
             newItemCard.append(titleHeader);
-            newItemCard.append(articleSource);
+            // newItemCard.append(articleSource);
             newItemCard.append(articleDate);
             newItemCard.append(articleDesc);
             newItemCard.append(urlButton);
