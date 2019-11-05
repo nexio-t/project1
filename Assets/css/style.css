@@ -10,10 +10,17 @@ footer {
   text-align: center;
 }
 
-.resultsDiv{
+.yelp-div{
   margin: 5px;
   background: #e9e9e9d2; 
   margin-bottom: 15px; 
+  }
+
+  .ticketmaster-div {
+    margin: 5px;
+    background: #e9e9e9d2; 
+    margin-bottom: 15px; 
+
   }
 
   .theImg{
@@ -21,6 +28,8 @@ footer {
     width: auto !important;
     margin-left: 4px; 
     border-radius: 10px; 
+    margin-top: 6px; 
+    margin-bottom: 6px; 
   }
 
   .weather-card {
@@ -77,6 +86,11 @@ footer {
     font-size: 11pt; 
   }
 
+  .source {
+    margin-left: 4px; 
+    margin-bottom: 8px !important; 
+  }
+
   .article-btn {
     width: 150px; 
     margin-left: 4px; 
@@ -115,5 +129,41 @@ footer {
   .yelp-btn {
     width: 150px; 
     margin-left: 4px; 
+  }
+
+  .add-fav-btn {
+    width: 150px; 
+    margin-top: 10px; 
+    margin-left: 4px; 
+    margin-bottom: 10px;
+    color: black !important; 
+    background: #44a6c6 !important; 
+    border-color: #44a6c6 !important; 
+  }
+
+  .price {
+    margin-left: 4px; 
+    margin-right: 4px; 
+    color: rgb(119, 115, 115) !important;
+    font-size: 11pt; 
+    margin-bottom: 5px; 
+  }
+
+  .card.resultsDiv {
+    border: 0 !important; 
+  }
+
+  .yelp-loc {
+    margin-left: 4px; 
+    margin-right: 4px; 
+    color: rgb(119, 115, 115) !important;
+    font-size: 11pt; 
+  }
+
+  .sport-date {
+    margin-left: 4px; 
+    margin-right: 4px; 
+    color: rgb(119, 115, 115) !important;
+    font-size: 11pt; 
   }
 

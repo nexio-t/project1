@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $('button[type="button"]').on("click", function() {
+
     switch (this.id) {
       case "ticket-master":
         ticketMasterApi(), displayNewsApi(), displayweather();
@@ -154,14 +155,16 @@ $(document).ready(function() {
       var REALticketMasterResults = $("<div class='resultsDiv'>");
       for (i = 0; i < response._embedded.events.length; i++) {
         console.log(response._embedded.events[i].name);
-        var ticketMasterResults = $("<div class='resultsDiv'>");
+        var ticketMasterResults = $("<div class='card ticketmaster-div resultsDiv'>");
 
         var eventName = response._embedded.events[i].name;
-        var newRow = $("<div class=event-name>").text(eventName);
+        var newRow = $("<h5 class=event-name>").text(eventName);
         ticketMasterResults.append(newRow);
         // adding date to game
         var eventDate = response._embedded.events[i].dates.start.localDate;
-        var newTD1 = $("<div>").text(eventDate);
+        var newEventDate = moment(eventDate, "YYYY-MM-DD").format("LL"); 
+        console.log(newEventDate);
+        var newTD1 = $("<div class=sport-date >").text(newEventDate);
         ticketMasterResults.append(newTD1);
 
         // but the ticket url
@@ -198,7 +201,7 @@ $(document).ready(function() {
         var favButton = $("<button>");
         favButton.attr({
           // "src": responseG.images.fixed_height.url,
-          class: "fav-button",
+          class: "fav-button btn-primary btn-sm add-fav-btn",
           type: "fav-button"
         });
         // favButton.addClass("fav-button");
@@ -245,7 +248,7 @@ $(document).ready(function() {
         console.log(queryYelpURL);
         console.log(response);
 
-        var yelpResultsDiv = $("<div class= 'card resultsDiv'>");
+        var yelpResultsDiv = $("<div class= 'card resultsDiv yelp-div'>");
         // $(".resultsDiv").css("margin", "5px");
         // $(".resultsDiv").css("border-style", "double");
 
@@ -273,14 +276,14 @@ $(document).ready(function() {
           '<a class=" btn btn-outline-primary btn-sm yelpLink" href=' +
             yelpURL +
             'target="_blank"' +
-            ">Get tickets</a>"
+            ">See Yelp Reviews</a>"
         );
         yelpResultsDiv.append(yelpRow3);
 
         // price range   business[i].price
         console.log("price range " + business[i].price);
         var yelpPrice = business[i].price;
-        var yelpRow4 = $("<div>").text(yelpPrice);
+        var yelpRow4 = $("<div class=price>").text(yelpPrice);
         yelpResultsDiv.append(yelpRow4);
 
         // location business[i].location.display_address[0] + business[i].location.display_address[1] ;
@@ -290,14 +293,14 @@ $(document).ready(function() {
           business[i].location.display_address[0] +
           ", " +
           business[i].location.display_address[1];
-        var yelpRow5 = $("<div>").text(yelpLocation);
+        var yelpRow5 = $("<div class=yelp-loc>").text(yelpLocation);
         yelpResultsDiv.append(yelpRow5);
 
         // fav button
         var favButton = $("<button>");
         favButton.attr({
           // "src": responseG.images.fixed_height.url,
-          class: "fav-button",
+          class: "fav-button btn-warning btn-sm add-fav-btn",
           type: "fav-button"
         });
         // favButton.addClass("fav-button");
@@ -313,7 +316,7 @@ $(document).ready(function() {
 
   // ***************** END OF YELP API ******************
 
-  //--------------------------------------Google News API Start---------------------------------------------//
+  //--------------------------------------News API Start---------------------------------------------//
 
   function displayNewsApi() {
     event.preventDefault();
@@ -363,7 +366,7 @@ $(document).ready(function() {
 
         var titleHeader = $("<h5 class=news-title>" + title + "</h5>");
 
-        var articleSource = $("<p>" + source + "</p>");
+        var articleSource = $("<p class=source>" + source + "</p>");
 
         var articleDate = $("<p class=news-date>" + date + "</p>");
 
@@ -388,7 +391,7 @@ $(document).ready(function() {
     }); // end of then function for news api
   } // end of function functionnewsapi
 
-  //--------------------------------------Google News API End---------------------------------------------//
+  //--------------------------------------News API End---------------------------------------------//
 
   // ************************* firebase setup *********************
 
