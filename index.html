@@ -11,13 +11,16 @@
   <!-- ============CSS============== -->
   <link rel="stylesheet" href="Assets/css/normalize.css" />
   <link rel="stylesheet" href="Assets/css/style.css" />
+<!-- firebase -->
+<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script> -->
 
   <!-- jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Link to Moment.js should go here -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <!-- Firebase Core JavaScript Link -->
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script> -->
   <!-- Specific Firebase products we want (Database) -->
   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </head>
@@ -34,6 +37,8 @@
   </nav>
 
   <!-- ****************************SEARCH BOX******************************** -->
+<div id= "fav-events"></div>
+
 
   <div class="col-md-6 mx-auto rounded mt-2">
     <!-- Add Trip  -->
@@ -157,8 +162,82 @@
                 <button type="button" class="btn btn-primary" id="animals">animals </button>
               </div>
               
- 
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="deals">deals </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="outdoors">outdoors </button>
+              </div>
+              
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="popular">popular </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="museums">museums </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="resturants">resturants </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="public_attractions">public attractions </button>
+              </div>
                 
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="shopping">shopping </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="coffee">coffee </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="workshops">workshops </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="parks">parks </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="nature">nature </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="fun">fun </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="nightlife">nightlife </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="landmarks">landmarks </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="tours">tours </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="wellness">wellness </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="sights">sights </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="concerts">concerts </button>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button type="button" class="btn btn-primary" id="bars">bars</button>
+              </div>
+
               </div>
             </div>
           </div>
