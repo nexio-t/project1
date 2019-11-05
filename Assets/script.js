@@ -245,8 +245,8 @@ $(document).ready(function() {
         console.log(queryYelpURL);
         console.log(response);
 
-        var yelpResultsDiv = $("<div class= 'resultsDiv'>");
-        $(".resultsDiv").css("margin", "5px");
+        var yelpResultsDiv = $("<div class= 'card resultsDiv'>");
+        // $(".resultsDiv").css("margin", "5px");
         // $(".resultsDiv").css("border-style", "double");
 
         // name
