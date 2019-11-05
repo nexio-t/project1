@@ -428,6 +428,7 @@ $(document).ready(function () {
   var database = firebase.database();
 
   // **** on click of fav button  ***
+  var favRowCount = 0;
   function onclickFavBtn() {
     $(".fav-button").on("click", function() {
       console.log("clicked fav button!");
@@ -443,8 +444,17 @@ $(document).ready(function () {
       console.log(this);
       var wholeDiv = $(this).parent();
       console.log($(this).parent());
-      $("#fav-events").append(wholeDiv);
       $(wholeDiv).addClass(".fav-button");
+      if ($("#fav-events" + favRowCount).children().length < 4) {
+        $("#fav-events" + favRowCount).append(wholeDiv);
+      }
+      else {
+        favRowCount++;
+        console.log(favRowCount);
+        var newFavDiv = $("<div id='fav-events" + favRowCount + "' class='row'>")
+        newFavDiv.append(wholeDiv);
+        $("#fav-events").append(newFavDiv);
+      }
     }); // end of on click function
   } // end of function to move favs
 
