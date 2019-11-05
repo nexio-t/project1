@@ -7,7 +7,7 @@ $(document).ready(function () {
       // break;
     }
   }
-      $('button[type="button"]').on('click', function () {
+      $('.dropdown-item').on('click', function () {
          if(validateForm()){
     
            
