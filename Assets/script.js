@@ -157,7 +157,7 @@ $(document).ready(function() {
         var ticketMasterResults = $("<div class='resultsDiv'>");
 
         var eventName = response._embedded.events[i].name;
-        var newRow = $("<div>").text(eventName);
+        var newRow = $("<div class=event-name>").text(eventName);
         ticketMasterResults.append(newRow);
         // adding date to game
         var eventDate = response._embedded.events[i].dates.start.localDate;
@@ -168,10 +168,10 @@ $(document).ready(function() {
         var ticketmasterURL = response._embedded.events[i].url;
         var newTD2 = $("<div>");
         $(newTD2).append(
-          '<a class="yelpLink" href=' +
+          '<a class="yelpLink btn btn-outline-primary btn-sm" href=' +
             ticketmasterURL +
             'target="_blank"' +
-            ">click me for tickets!;</a>"
+            ">Get tickets</a>"
         );
         ticketMasterResults.append(newTD2);
 
@@ -247,12 +247,12 @@ $(document).ready(function() {
 
         var yelpResultsDiv = $("<div class= 'resultsDiv'>");
         $(".resultsDiv").css("margin", "5px");
-        $(".resultsDiv").css("border-style", "double");
+        // $(".resultsDiv").css("border-style", "double");
 
         // name
         console.log(business[i].name);
         var yelpName = business[i].name;
-        var yelpRow1 = $("<div>").text(yelpName);
+        var yelpRow1 = $("<h5 class=biz-name>").text(yelpName);
         yelpResultsDiv.append(yelpRow1);
 
         // business[i].image_url   for poster for event
@@ -260,8 +260,8 @@ $(document).ready(function() {
         var yelpPoster = business[i].image_url;
         var yelpRow2 = $("<div>");
         yelpRow2.append('<img class="theImg" src="' + yelpPoster + '"/>');
-        $(".theImg").css("width", "150px");
-        $(".theImg").css("height", "150px");
+        // $(".theImg").css("width", "150px");
+        // $(".theImg").css("height", "150px");
 
         yelpResultsDiv.append(yelpRow2);
 
@@ -270,10 +270,10 @@ $(document).ready(function() {
         var yelpURL = business[i].url;
         var yelpRow3 = $("<div>");
         $(yelpRow3).append(
-          '<a class="yelpLink" href=' +
+          '<a class=" btn btn-outline-primary btn-sm yelpLink" href=' +
             yelpURL +
             'target="_blank"' +
-            ">click me!;</a>"
+            ">Get tickets</a>"
         );
         yelpResultsDiv.append(yelpRow3);
 
