@@ -1,16 +1,28 @@
-$(document).ready(function() {
-  $('button[type="button"]').on("click", function() {
-    switch (this.id) {
-      case "ticket-master":
-        ticketMasterApi(), displayNewsApi(), displayweather();
-        break;
-
-      default:
-        displayYelpApi((eventType = this.id)),
-          displayNewsApi(),
-          displayweather();
+$(document).ready(function () {
+  
+  function validateForm() {
+    var x = $("#city").val();
+    if (x) {
+      return true;
+      // break;
     }
-  }); // end of on click function
+  }
+      $('button[type="button"]').on('click', function () {
+         if(validateForm()){
+    
+           
+           switch (this.id) {
+             case "ticket-master": ticketMasterApi(), displayNewsApi(), displayweather();
+             break;
+             
+             default: displayYelpApi(eventType = this.id), displayNewsApi(), displayweather();
+            };
+          
+        } else {
+          alert("Name must be filled out");
+        }
+      }) // end of on click function
+  
 
   // var for our search bbuttons
   var city = $("#city").val();

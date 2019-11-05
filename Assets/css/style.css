@@ -90,6 +90,10 @@ footer {
     margin-bottom: 4px !important; 
   }
 
+  #fav-events{
+    display: inline-flex; 
+    /* flex-grow: 5;  */
+  }
   .biz-name {
     margin-left: 4px; 
     margin-top: 4px; 
