@@ -1,15 +1,28 @@
 $(document).ready(function () {
   
-  
-  $('button[type="button"]').on('click', function () {
-    switch (this.id) {
-      case "ticket-master": ticketMasterApi(), displayNewsApi(), displayweather();
-      break;
-      
-      default: displayYelpApi(eventType = this.id), displayNewsApi(), displayweather();
-      
+  function validateForm() {
+    var x = $("#city").val();
+    if (x) {
+      return true;
+      // break;
     }
-  }) // end of on click function
+  }
+      $('button[type="button"]').on('click', function () {
+         if(validateForm()){
+    
+           
+           switch (this.id) {
+             case "ticket-master": ticketMasterApi(), displayNewsApi(), displayweather();
+             break;
+             
+             default: displayYelpApi(eventType = this.id), displayNewsApi(), displayweather();
+            };
+          
+        } else {
+          alert("Name must be filled out");
+        }
+      }) // end of on click function
+  
 
   
   
@@ -473,7 +486,7 @@ for (i = 0; i < response.list.length; i += 3) {
               var wholeDiv = $(this).parent();
               console.log($(this).parent());
               $("#fav-events").append(wholeDiv);
-              $(wholeDiv).addClass(".fav-button");
+              $(wholeDiv).addClass(".fav-button card");
             }); // end of on click function
             }// end of function to move favs 
     

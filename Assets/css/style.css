@@ -85,3 +85,8 @@ footer {
   p.news-desc {
     margin-bottom: 4px !important; 
   }
+
+  #fav-events{
+    display: inline-flex; 
+    /* flex-grow: 5;  */
+  }
