@@ -28,11 +28,15 @@ footer {
 
 .resultsDiv{
   margin: 5px;
-  border-style: double;
+  background: #e9e9e9d2; 
+  margin-bottom: 15px; 
   }
+
   .theImg{
-    height: 150px;
-    width: 150px;
+    height: 100px !important;
+    width: auto !important;
+    margin-left: 4px; 
+    border-radius: 10px; 
   }
 
   .weather-card {
@@ -90,7 +94,7 @@ footer {
   }
 
   .article-btn {
-    width: 40%; 
+    width: 150px; 
     margin-left: 4px; 
   }
 
@@ -101,3 +105,35 @@ footer {
   p.news-desc {
     margin-bottom: 4px !important; 
   }
+
+  #fav-events{
+    display: inline-flex; 
+    /* flex-grow: 5;  */
+  }
+  .biz-name {
+    margin-left: 4px; 
+    margin-top: 4px; 
+    /* font-size: 16pt;  */
+  }
+
+  .event-name {
+    margin-left: 4px; 
+    margin-top: 4px; 
+  }
+
+  .yelpLink {
+    margin-left: 4px; 
+    margin-top: 6px; 
+    margin-bottom: 6px; 
+  }
+
+  .yelp-price {
+    margin-left: 4px; 
+    margin-bottom: 6px;
+  }
+
+  .yelp-btn {
+    width: 150px; 
+    margin-left: 4px; 
+  }
+
