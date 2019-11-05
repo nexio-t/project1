@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Info Event</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Metrophobic|Rubik&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
   type="text/css">
@@ -33,202 +39,120 @@
 
 <body>
   <!--***********************HEADER NAVIGATION**************************** -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Info Event</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <form class="form-inline">
+      <div class="form-group">
+    <img src="assets/images/logo.png" alt="event finder logo" id="logo">
+      <h1>Info Event</h1>
+      </div>    
+   
+      <div class="form-group col-2 offset-4">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="city">
+        </div>
+      
+   
+        <div class="form-group col-1">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option value="AL">AL</option>
+              <option value="AK">AK</option>
+              <option value="AR">AR</option>
+              <option value="AZ">AZ</option>
+              <option value="CA">CA</option>
+              <option value="CO">CO</option>
+              <option value="CT">CT</option>
+              <option value="DC">DC</option>
+              <option value="DE">DE</option>
+              <option value="FL">FL</option>
+              <option value="GA">GA</option>
+              <option value="HI">HI</option>
+              <option value="IA">IA</option>
+              <option value="ID">ID</option>
+              <option value="IL">IL</option>
+              <option value="IN">IN</option>
+              <option value="KS">KS</option>
+              <option value="KY">KY</option>
+              <option value="LA">LA</option>
+              <option value="MA">MA</option>
+              <option value="MD">MD</option>
+              <option value="ME">ME</option>
+              <option value="MI">MI</option>
+              <option value="MN">MN</option>
+              <option value="MO">MO</option>
+              <option value="MS">MS</option>
+              <option value="MT">MT</option>
+              <option value="NC">NC</option>
+              <option value="NE">NE</option>
+              <option value="NH">NH</option>
+              <option value="NJ">NJ</option>
+              <option value="NM">NM</option>
+              <option value="NV">NV</option>
+              <option value="NY">NY</option>
+              <option value="ND">ND</option>
+              <option value="OH">OH</option>
+              <option value="OK">OK</option>
+              <option value="OR">OR</option>
+              <option value="PA">PA</option>
+              <option value="RI">RI</option>
+              <option value="SC">SC</option>
+              <option value="SD">SD</option>
+              <option value="TN">TN</option>
+              <option value="TX">TX</option>
+              <option value="UT">UT</option>
+              <option value="VT">VT</option>
+              <option value="VA">VA</option>
+              <option value="WA">WA</option>
+              <option value="WI">WI</option>
+              <option value="WV">WV</option>
+              <option value="WY">WY</option>
+            </select>
+        
+        </div>
+        
+        <div class="form-group col-1">
+            <label for="inputCategories">Categories</label>
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Choose
+              </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="ticket-master">Sports </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary"id="food">Food</button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="music">Music</button>
+              <button type="button" class="submit dropdown-item btn btn-primary" id="events"> Events </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="animals">Animals </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="shopping">Shopping </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="coffee">Coffee </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="workshops">Workshops </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="parks">Parks </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="nature">Nature </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="fun">fun </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="nightlife">nightlife </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="landmarks">Landmarks </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="tours">Tours </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="wellness">Wellness </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="sights">Sights </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="concerts">Concerts </button>
+              <button type="button" class="submit dropdown-item btn  btn-primary" id="bars">Bars</button>
+            
+          </div>
+            </div>
+            </div>
+          
+        </form>
 
-    <i class="fas fa-search"></i>
-
-  </nav>
 
   <!-- ****************************SEARCH BOX******************************** -->
-<div id= "fav-events"></div>
+  <div id= "fav-events">
+    <div id="fav-events0" class="row"></div>
+  </div>
 
 
-  <div class="col-md-6 mx-auto rounded mt-2">
-    <div class="card mb-4">
-      <div class="card-header"></div>
-      <div class="card-body">
+  
 
-        <div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="city">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option value="AL">AL</option>
-                <option value="AK">AK</option>
-                <option value="AR">AR</option>
-                <option value="AZ">AZ</option>
-                <option value="CA">CA</option>
-                <option value="CO">CO</option>
-                <option value="CT">CT</option>
-                <option value="DC">DC</option>
-                <option value="DE">DE</option>
-                <option value="FL">FL</option>
-                <option value="GA">GA</option>
-                <option value="HI">HI</option>
-                <option value="IA">IA</option>
-                <option value="ID">ID</option>
-                <option value="IL">IL</option>
-                <option value="IN">IN</option>
-                <option value="KS">KS</option>
-                <option value="KY">KY</option>
-                <option value="LA">LA</option>
-                <option value="MA">MA</option>
-                <option value="MD">MD</option>
-                <option value="ME">ME</option>
-                <option value="MI">MI</option>
-                <option value="MN">MN</option>
-                <option value="MO">MO</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="NC">NC</option>
-                <option value="NE">NE</option>
-                <option value="NH">NH</option>
-                <option value="NJ">NJ</option>
-                <option value="NM">NM</option>
-                <option value="NV">NV</option>
-                <option value="NY">NY</option>
-                <option value="ND">ND</option>
-                <option value="OH">OH</option>
-                <option value="OK">OK</option>
-                <option value="OR">OR</option>
-                <option value="PA">PA</option>
-                <option value="RI">RI</option>
-                <option value="SC">SC</option>
-                <option value="SD">SD</option>
-                <option value="TN">TN</option>
-                <option value="TX">TX</option>
-                <option value="UT">UT</option>
-                <option value="VT">VT</option>
-                <option value="VA">VA</option>
-                <option value="WA">WA</option>
-                <option value="WI">WI</option>
-                <option value="WV">WV</option>
-                <option value="WY">WY</option>
-              </select>
-            </div>
-            <!-- <div class="form-group col-md-12">
-              <label for="Categories">Categories</label>
-              <select class="form-control selcls" id="eventType">
-                <option>Music</option>
-                <option>Film & Media</option>
-                <option>Performing & Visual Arts</option>
-                <option>Sports & Fitness</option>
-                <option>Travel & Outdoor</option>
-                <option>Holiday</option>
-                <option>Auto, Boat & Air</option>
-                <option>Hobbies</option>
-              </select>
-            </div> -->
-            <!-- <div class="form-group col-md-4">
-                                        <label for="role-input">Date</label>
-                                        <input class="form-control" id="date" type="date">
-                                    </div> -->
-
-
-            <!-- <div class="row">
-              <div class="form-group col-md-4">
-                <input type="checkbox" id="event-brite">Event Brite </input>
-              </div>
-              <div class="form-group col-md-4">
-                <input type="checkbox" id="ticket-master">Ticket Master</input>
-              </div> -->
-              <!-- <div class="form-group col-md-4">
-                <input type="checkbox" id="priceBtn">Free Results</input>
-              </div> -->
-              <!-- <div class="form-group col-md-4 offset-4">
-                <button class="btn btn-primary" id="submit">Submit</button>
-              </div>
-            </div> -->
-
-            <div class="row">
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="ticket-master">Sports </button>
-              </div>
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary"id="food">Food</button>
-              </div>
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="music">Music</button>
-              </div>
-             
-              <div class="form-group col-md-4">
-                <button type="button" class="btn btn-primary" id="events"> events </button>
-              </div>
-                
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="animals">animals </button>
-              </div>
+        
               
-              
-                
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="shopping">shopping </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="coffee">coffee </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="workshops">workshops </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="parks">parks </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="nature">nature </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="fun">fun </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="nightlife">nightlife </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="landmarks">landmarks </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="tours">tours </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="wellness">wellness </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="sights">sights </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="concerts">concerts </button>
-              </div>
-
-              <div class="form-group col-md-4">
-                <button type="button" class="submit btn  btn-primary" id="bars">bars</button>
-              </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- ****************Events Card ****************** -->
 

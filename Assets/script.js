@@ -1,17 +1,28 @@
-$(document).ready(function() {
-  $('button[type="button"]').on("click", function() {
-
-    switch (this.id) {
-      case "ticket-master":
-        ticketMasterApi(), displayNewsApi(), displayweather();
-        break;
-
-      default:
-        displayYelpApi((eventType = this.id)),
-          displayNewsApi(),
-          displayweather();
+$(document).ready(function () {
+  
+  function validateForm() {
+    var x = $("#city").val();
+    if (x) {
+      return true;
+      // break;
     }
-  }); // end of on click function
+  }
+      $('.dropdown-item').on('click', function () {
+         if(validateForm()){
+    
+           
+           switch (this.id) {
+             case "ticket-master": ticketMasterApi(), displayNewsApi(), displayweather();
+             break;
+             
+             default: displayYelpApi(eventType = this.id), displayNewsApi(), displayweather();
+            };
+          
+        } else {
+          alert("Name must be filled out");
+        }
+      }) // end of on click function
+  
 
   // var for our search bbuttons
   var city = $("#city").val();
@@ -449,6 +460,7 @@ $(document).ready(function() {
   var database = firebase.database();
 
   // **** on click of fav button  ***
+  var favRowCount = 0;
   function onclickFavBtn() {
     $(".fav-button").on("click", function() {
       console.log("clicked fav button!");
@@ -464,8 +476,17 @@ $(document).ready(function() {
       console.log(this);
       var wholeDiv = $(this).parent();
       console.log($(this).parent());
-      $("#fav-events").append(wholeDiv);
       $(wholeDiv).addClass(".fav-button");
+      if ($("#fav-events" + favRowCount).children().length < 4) {
+        $("#fav-events" + favRowCount).append(wholeDiv);
+      }
+      else {
+        favRowCount++;
+        console.log(favRowCount);
+        var newFavDiv = $("<div id='fav-events" + favRowCount + "' class='row'>")
+        newFavDiv.append(wholeDiv);
+        $("#fav-events").append(newFavDiv);
+      }
     }); // end of on click function
   } // end of function to move favs
 
