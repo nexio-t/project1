@@ -16,10 +16,8 @@ $(document).ready(function () {
   // var for our search bbuttons
   var city = $("#city").val();
   var eventType = $("#eventType").val();
-  
-  
-  
-  
+
+
   // ************************* WEATHER API ***********************************
   
   function displayweather() {
@@ -29,7 +27,6 @@ $(document).ready(function () {
     // Here we are building the URL we need to query the database
     var queryUrlWeather = "https://api.openweathermap.org/data/2.5/forecast?" +
     "q=" + city + "," + "us" + "&appid=" + weatherAPI;
-    
     
     $.ajax({
       url: queryUrlWeather,
@@ -41,57 +38,91 @@ $(document).ready(function () {
       console.log("city name " + response.city.name)
       
       var weatherCityName = response.city.name;
-      var NWRow1 = $("<div>").text("Weather Results for " + weatherCityName);
-      $("#weatherResultsDiv").prepend(NWRow1);
-      
-      for (i = 0; i < response.list.length; i += 3) {
-        // div to hold overarching weather data
-        var rowForWeatherResults = $("<div class='resultsDiv'>");
-        
-        
-        console.log(response.list[i]);
-        
-        // date & time
-        console.log(response.list[i].dt_txt);
-        var dateTime = response.list[i].dt_txt;
-        var NWRow2 = $("<div>").text("Date & Time: " + dateTime);
-        rowForWeatherResults.append(NWRow2);
-        
-        // temp min response.list[i].main.temp_min
-        console.log("min temp " + response.list[i].main.temp);
-        var temp = response.list[i].main.temp;
-        var NW3 = $("<div>").text(" Temp: " + temp);
-        rowForWeatherResults.append(NW3);
-        
-        // weather (response.list[i].weather.description)
-        console.log("weather condition " + response.list[i].weather[0].description);
-        var weatherCondition = response.list[i].weather[0].description;
-        var NW4 = $("<div>").text(weatherCondition);
-        rowForWeatherResults.append(NW4);
-        
-        // wind   .wind.speed
-        console.log("wind " + response.list[i].wind.speed);
-        var wind = response.list[i].wind.speed;
-        var NW5 = $("<div>").text("Wind Speed: " + wind);
-        rowForWeatherResults.append(NW5);
-        
-        //humidity
-        console.log("humidity " + response.list[i].main.humidity);
-        var humidity = response.list[i].main.humidity;
-        var NW6 = $("<div>").text("humidity: " + humidity);
-        rowForWeatherResults.append(NW6);
-        
-        
-        // add entire new div to weather results div
-        $("#weatherResultsDiv").append(rowForWeatherResults);
-        
-      }; // end of loop for response.list
-    }); // end of weather api search
-  }; // end of displayweather function
+$(".city-name").append(weatherCityName + " ");
+// $("#weatherResultsDiv").prepend(NWRow1);
+
+var existingDate = []; 
+
+for (i = 0; i < response.list.length; i += 3) {
+
+  // div to hold overarching weather data
+  var rowForWeatherResults = $("<div class='resultsDiv'>");
+
+  // card div to hold weather data 
+  var weatherCard = $("<div class='card weather-card'></div>")
+
+  // date & time
+  var originalDateFormat = response.list[i].dt_txt.substring(0,10);
+  var hourFormat = response.list[i].dt_txt.substring(11,16); 
+
+  // convert raw date into readable date and hour 
+  var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("LL"); 
+  var convertedTime = moment(hourFormat, "HH:mm").format("hh:mm A"); 
+
+  // create variable to save date and time in HTML 
+  var NWRow2 = $("<h5 class=date-header>").text(newDateFormat);
+  var NW3Time = $("<h6 class=hour-header>").text(convertedTime); 
+
+  // variable to store temperature 
+  var temp = response.list[i].main.temp;
+
+  var convertedTemp; 
+
+  function temperatureConverter(valNum) {
+    valNum = parseFloat(valNum);
+    convertedTemp = ((valNum-273.15)*1.8)+32; 
+    return Math.round(convertedTemp); 
+  }; 
+
+  var newTemp = temperatureConverter(temp); 
+
+  console.log(newTemp); 
+
+  var NW3 = $("<div class=weather-data>").text("Temperature: " + newTemp + "F");
+  rowForWeatherResults.append(NW3);
   
-  // ************************** TICKET MASTER API ********************************
+  // variable to store current conditions 
+  var weatherCondition = response.list[i].weather[0].main;
+  var NW4 = $("<div class=weather-data>").text("Conditions: "+ weatherCondition);
+  rowForWeatherResults.append(NW4);
   
+  // variable to store wind
+  var wind = response.list[i].wind.speed;
+  var newWind = Math.round((wind *3600 / 1610.3*1000) / 1000);
+  var NW5 = $("<div class=weather-data>").text("Wind: " + newWind + " mph");
+  rowForWeatherResults.append(NW5);
   
+  // variable to store humidity 
+  var humidity = response.list[i].main.humidity;
+  var NW6 = $("<div class=weather-data>").text("Humidity: " + humidity + "%");
+  rowForWeatherResults.append(NW6);
+
+  
+  // conditional to avoid displaying same date twice 
+  if (existingDate.includes(originalDateFormat) == false) {
+    weatherCard.append(NWRow2);
+  };
+
+  // push each date to the existing date array 
+  existingDate.push(originalDateFormat); 
+  console.log(existingDate); 
+
+  // append each piece of weather data to the weather card 
+  weatherCard.append(NW3Time);  
+  weatherCard.append(NW3); 
+  weatherCard.append(NW4);
+  weatherCard.append(NW5);
+  weatherCard.append(NW6); 
+
+  // add entire new div to weather results div
+  $("#weatherResultsDiv").append(weatherCard);
+
+}; // end of loop for response.list
+}); // end of weather api search
+}; // end of displayweather function
+  
+
+// ******************** TICKET MASTER API *****************
   function ticketMasterApi() {
     $("#eventResultsDiv").empty();
     city = $("#city").val();
@@ -162,6 +193,7 @@ $(document).ready(function () {
       onclickFavBtn();
     });// end of ticket master api search
   }; // end of on ticket-master events click
+  // ************ END OF TICKET MASTER API **********************
   
   
   //***************************** yelp api ***********************************
@@ -249,10 +281,12 @@ $(document).ready(function () {
       /// call onfav click
       
     }); // end of response
+       
     
     
   };// end of yelp api search
   
+  // ***************** END OF YELP API ******************
   
   
   //--------------------------------------Google News API Start---------------------------------------------//
@@ -334,6 +368,45 @@ $(document).ready(function () {
           //  imageDiv.attr("data-animate", dataAnimate);
           
           //  $(imageArea).append(imageDiv); 
+          // for (var i = 0; i < 5; i++) {
+            
+          //   var title = result.articles[i].title;
+          //   var newDateFormat = result.articles[i].publishedAt.substring(0, 10);
+          //   var date = moment(newDateFormat, "YYYY-MM-DD").format("LL");
+          //   var source = result.articles[i].source.name;
+          //   console.log(source);
+          //   var description = result.articles[i].description;
+          //   var url = result.articles[i].url;
+            
+          //   console.log($(result.articles[0].source.name));
+          //   console.log(title);
+          //   console.log(date);
+          //   console.log(description);
+          //   console.log(url);
+            
+          //   // div with News card
+          //   var newsDiv = $("#newsResultsDiv");
+            
+          //   var newItemCard = $("<div class='card news-card'></div>")
+            
+          //   var titleHeader = $("<h5 class=news-title>" + title + "</h5>");
+            
+          //   var articleSource = $("<p>" + source + "</p>");
+            
+          //   var articleDate = $("<p class=news-date>" + date + "</p>");
+            
+          //   var articleDesc = $("<p class=news-desc>" + description + "</p>");
+            
+          //   var urlButton = $("<a href='" + url + "' target='_blank' class='article-btn btn btn-outline-primary btn-sm'>" + "Read Article" + "</a>");
+            
+          //   newItemCard.append(titleHeader);
+          //   newItemCard.append(articleSource);
+          //   newItemCard.append(articleDate);
+          //   newItemCard.append(articleDesc);
+          //   newItemCard.append(urlButton);
+          //   newsDiv.append(newItemCard);
+            
+          // }; // end of for loop 
           
           //  $(imageArea).append("<p>Rating: " + rating + "</p>"); 
           
@@ -341,9 +414,9 @@ $(document).ready(function () {
           
           // on click for class of sports 
           
-        };
+        }; // end of for loop 
         
-      });
+      });// end of then function for news api
     } // end of function functionnewsapi
     
     // });
