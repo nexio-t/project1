@@ -290,7 +290,8 @@ $(document).ready(function () {
             var title = result.articles[i].title;
             var newDateFormat = result.articles[i].publishedAt.substring(0, 10);
             var date = moment(newDateFormat, "YYYY-MM-DD").format("LL");
-            var source = result.articles[i].source[1];
+            var source = result.articles[i].source.name;
+            console.log(source);
             var description = result.articles[i].description;
             var url = result.articles[i].url;
             
@@ -307,7 +308,7 @@ $(document).ready(function () {
             
             var titleHeader = $("<h5 class=news-title>" + title + "</h5>");
             
-            // var articleSource = $("<p>" + source + "</p>");
+            var articleSource = $("<p>" + source + "</p>");
             
             var articleDate = $("<p class=news-date>" + date + "</p>");
             
@@ -316,35 +317,11 @@ $(document).ready(function () {
             var urlButton = $("<a href='" + url + "' target='_blank' class='article-btn btn btn-outline-primary btn-sm'>" + "Read Article" + "</a>");
             
             newItemCard.append(titleHeader);
-            // newItemCard.append(articleSource);
+            newItemCard.append(articleSource);
             newItemCard.append(articleDate);
             newItemCard.append(articleDesc);
             newItemCard.append(urlButton);
-            
             newsDiv.append(newItemCard);
-            
-            
-            //  var imageArea = $("<div></div>"); 
-            
-            //  imageArea.addClass("img-div");
-            
-            //  var imageDiv = $("<img>").attr("src", dataStill); 
-            
-            //  imageDiv.addClass("click-area"); 
-            
-            //  imageDiv.attr("data-state", "still"); 
-            
-            //  imageDiv.attr("data-still", dataStill);
-            
-            //  imageDiv.attr("data-animate", dataAnimate);
-            
-            //  $(imageArea).append(imageDiv); 
-            
-            //  $(imageArea).append("<p>Rating: " + rating + "</p>"); 
-            
-            //  $(".gif-area").append(imageArea);
-            
-            // on click for class of sports 
             
           };
           
