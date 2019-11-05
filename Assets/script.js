@@ -275,7 +275,7 @@ $(document).ready(function () {
         console.log("city is " + noSpacesCity);
         
         // Update the URL
-        var googleURL = "https://newsapi.org/v2/everything?q=" + noSpacesCity + "&sources=the-new-york-times,usa-today,abc-news&sortBy=relevancy&apiKey=963471a1dfbe44c6a4c1fa29c815655b";
+        var googleURL = "https://newsapi.org/v2/everything?q=" + noSpacesCity + "&sources=cnn,reuters,abc-news,the-wall-street-journal,usa-today&sortBy=relevancy&apiKey=963471a1dfbe44c6a4c1fa29c815655b";
         
         console.log("google news URL is " + googleURL);
         
@@ -285,7 +285,7 @@ $(document).ready(function () {
         }).then(function (result) {
           
           
-          for (var i = 0; i < 5; i++) {
+          for (var i = 0; i < 15; i+=3) {
             
             var title = result.articles[i].title;
             var newDateFormat = result.articles[i].publishedAt.substring(0, 10);
