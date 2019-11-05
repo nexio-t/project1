@@ -3,17 +3,14 @@
 body{
   background: url(../images/background.jpg);
   background-size: cover; 
+  color: #236E96; 
 
 }
 h1{
   font-family: 'Dosis', sans-serif;
   font-weight: bold;
   color: #000066; 
-  font-size: 42px; 
-  text-align: center; 
-  background-color: #F3872F;
-  margin: 0; 
-  padding: 1% 0; 
+  font-size: 42px;   
 }
 footer {
   position: fixed;
@@ -26,7 +23,22 @@ footer {
   color: #236E96; 
   background-color: #F3872F;
 }
+form{
+  padding: 0 2%;
+  background-color: #F3872F;
+  color: #000066; 
+}
 
+form img{
+  width: 15%; 
+}
+.form-group{
+  width: 25%; 
+}
+
+#inputCity{
+  width: 50%; 
+}
 .resultsDiv{
   margin: 5px;
   background: #e9e9e9d2; 
