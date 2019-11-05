@@ -16,8 +16,6 @@ $(document).ready(function () {
   var eventType = $("#eventType").val();
 
 
-  
-  
   // ************************* WEATHER API ***********************************
   
   function displayweather() {
@@ -38,12 +36,13 @@ $(document).ready(function () {
         console.log("city name " + response.city.name)
         
         var weatherCityName = response.city.name;
-        var NWRow1 = $("<div>").text("Weather Results for " + weatherCityName);
-        $("#weatherResultsDiv").prepend(NWRow1);
+        $(".city-name").append(weatherCityName + " ");
+        // $("#weatherResultsDiv").prepend(NWRow1);
 
         var existingDate = []; 
 
         for (i = 0; i < response.list.length; i += 3) {
+
           // div to hold overarching weather data
           var rowForWeatherResults = $("<div class='resultsDiv'>");
 
@@ -55,58 +54,58 @@ $(document).ready(function () {
           var hourFormat = response.list[i].dt_txt.substring(11,16); 
 
           // convert raw date into readable date and hour 
-          var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("MMM Do YYYY"); 
+          var newDateFormat = moment(originalDateFormat, "YYYY-MM-DD").format("LL"); 
           var convertedTime = moment(hourFormat, "HH:mm").format("hh:mm A"); 
 
           // create variable to save date and time in HTML 
-          var NWRow2 = $("<h5>").text(newDateFormat);
-          var NW3Time = $("<h6>").text(convertedTime); 
+          var NWRow2 = $("<h5 class=date-header>").text(newDateFormat);
+          var NW3Time = $("<h6 class=hour-header>").text(convertedTime); 
       
-          // temp min response.list[i].main.temp_min
-          console.log("min temp " + response.list[i].main.temp);
+          // variable to store temperature 
           var temp = response.list[i].main.temp;
-          console.log(temp); 
 
-          // function temperatureConverter(valNum) {
-          //   valNum = parseFloat(valNum);
-          //   document.getElementById("outputFahrenheit").innerHTML=((valNum-273.15)*1.8)+32;
-          // }
+          var convertedTemp; 
 
-          // var newTemp = temperatureConverter(temp); 
+          function temperatureConverter(valNum) {
+            valNum = parseFloat(valNum);
+            convertedTemp = ((valNum-273.15)*1.8)+32; 
+            return Math.round(convertedTemp); 
+          }; 
 
-          console.log(temp); 
+          var newTemp = temperatureConverter(temp); 
 
-          var NW3 = $("<div>").text(" Temp: " + temp);
+          console.log(newTemp); 
+
+          var NW3 = $("<div class=weather-data>").text("Temperature: " + newTemp + "F");
           rowForWeatherResults.append(NW3);
           
-          // weather (response.list[i].weather.description)
-          console.log("weather condition " + response.list[i].weather[0].description);
-          var weatherCondition = response.list[i].weather[0].description;
-          var NW4 = $("<div>").text(weatherCondition);
+          // variable to store current conditions 
+          var weatherCondition = response.list[i].weather[0].main;
+          var NW4 = $("<div class=weather-data>").text("Conditions: "+ weatherCondition);
           rowForWeatherResults.append(NW4);
           
-          // wind   .wind.speed
-          console.log("wind " + response.list[i].wind.speed);
+          // variable to store wind
           var wind = response.list[i].wind.speed;
-          var NW5 = $("<div>").text("Wind Speed: " + wind);
+          var newWind = Math.round((wind *3600 / 1610.3*1000) / 1000);
+          var NW5 = $("<div class=weather-data>").text("Wind: " + newWind + " mph");
           rowForWeatherResults.append(NW5);
           
-          //humidity
-          console.log("humidity " + response.list[i].main.humidity);
+          // variable to store humidity 
           var humidity = response.list[i].main.humidity;
-          var NW6 = $("<div>").text("humidity: " + humidity);
-          // rowForWeatherResults.append(NW6);
+          var NW6 = $("<div class=weather-data>").text("Humidity: " + humidity + "%");
+          rowForWeatherResults.append(NW6);
 
-          console.log(existingDate.includes(originalDateFormat));
-
+          
+          // conditional to avoid displaying same date twice 
           if (existingDate.includes(originalDateFormat) == false) {
             weatherCard.append(NWRow2);
           };
 
-          // push each date to the existind date array 
+          // push each date to the existing date array 
           existingDate.push(originalDateFormat); 
           console.log(existingDate); 
-          
+
+          // append each piece of weather data to the weather card 
           weatherCard.append(NW3Time);  
           weatherCard.append(NW3); 
           weatherCard.append(NW4);
@@ -142,7 +141,7 @@ $(document).ready(function () {
         var REALticketMasterResults = $("<div class='resultsDiv'>");
         for (i = 0; i < response._embedded.events.length; i++) {
           console.log(response._embedded.events[i].name);
-          var ticketMasterResults = $("<div class='resultsDiv'>");
+          var ticketMasterResults = $("<div class='card resultsDiv'>");
           
           var eventName = response._embedded.events[i].name;
           var newRow = $("<div>").text(eventName);
@@ -290,8 +289,9 @@ $(document).ready(function () {
             
             var title = result.articles[i].title;
             var newDateFormat = result.articles[i].publishedAt.substring(0, 10);
-            var date = moment(newDateFormat, "YYYY-MM-DD").format("MMM Do YYYY");
-            var source = result.articles[i].source[1];
+            var date = moment(newDateFormat, "YYYY-MM-DD").format("LL");
+            var source = result.articles[i].source.name;
+            console.log(source);
             var description = result.articles[i].description;
             var url = result.articles[i].url;
             
@@ -306,46 +306,22 @@ $(document).ready(function () {
             
             var newItemCard = $("<div class='card news-card'></div>")
             
-            var titleHeader = $("<h5>" + title + "</h5>");
+            var titleHeader = $("<h5 class=news-title>" + title + "</h5>");
             
             var articleSource = $("<p>" + source + "</p>");
             
-            var articleDate = $("<p>" + date + "</p>");
+            var articleDate = $("<p class=news-date>" + date + "</p>");
             
-            var articleDesc = $("<p>" + description + "</p>");
+            var articleDesc = $("<p class=news-desc>" + description + "</p>");
             
-            var urlButton = $("<a href='" + url + "' target='_blank' class='btn btn-primary'>" + "Read Article" + "</a>");
+            var urlButton = $("<a href='" + url + "' target='_blank' class='article-btn btn btn-outline-primary btn-sm'>" + "Read Article" + "</a>");
             
             newItemCard.append(titleHeader);
             newItemCard.append(articleSource);
             newItemCard.append(articleDate);
             newItemCard.append(articleDesc);
             newItemCard.append(urlButton);
-            
             newsDiv.append(newItemCard);
-            
-            
-            //  var imageArea = $("<div></div>"); 
-            
-            //  imageArea.addClass("img-div");
-            
-            //  var imageDiv = $("<img>").attr("src", dataStill); 
-            
-            //  imageDiv.addClass("click-area"); 
-            
-            //  imageDiv.attr("data-state", "still"); 
-            
-            //  imageDiv.attr("data-still", dataStill);
-            
-            //  imageDiv.attr("data-animate", dataAnimate);
-            
-            //  $(imageArea).append(imageDiv); 
-            
-            //  $(imageArea).append("<p>Rating: " + rating + "</p>"); 
-            
-            //  $(".gif-area").append(imageArea);
-            
-            // on click for class of sports 
             
           };
           
