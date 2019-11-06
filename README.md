@@ -7,7 +7,7 @@ Our repository ==> https://github.com/moshecstern/project1
 Event finder is an app that aggregates search results for events, businesses, landmarks, and local news all in one place, simplifying the fragmented travel research and inspiration process. 
 
 ### How to use 
-Enter any U.S. city and select an interest type from the dropdown to filter your event results by event categories. Pin favorite events to the favorites section with the Add Favorite button. 
+Enter any United States city and select an interest type from the dropdown to filter your event results by event categories. Pin favorite events to the favorites section with the Add Favorite button. 
 
 ### Tech
 
