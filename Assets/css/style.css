@@ -4,6 +4,7 @@ body{
   background: url(../images/background.jpg);
   background-size: cover; 
   color: #236E96; 
+  font-family: 'Rubik', sans-serif;
 
 }
 h1{
@@ -28,13 +29,29 @@ form{
   background-color: #F3872F;
   color: #000066; 
 }
-
+#dropdownMenu2{
+  background-color: #236E96 ;
+}
 form img{
   width: 15%; 
+}
+button{
+  font-family: 'Rubik Mono One', sans-serif;
+  
 }
 .form-group{
   width: 25%; 
 }
+.card{
+  background-color: #F3872F; 
+  text-align: center;
+  color: #000066; 
+}
+.card-title{
+  font-family: 'Rubik Mono One', sans-serif;
+  
+}
+
 
 #inputCity{
   width: 50%; 
