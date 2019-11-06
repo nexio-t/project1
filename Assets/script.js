@@ -476,7 +476,10 @@ $(document).ready(function () {
       console.log(this);
       var wholeDiv = $(this).parent();
       console.log($(this).parent());
-      $(wholeDiv).addClass(".fav-button");
+
+      $(this).hide();
+
+      $(wholeDiv).addClass(".fav-button fav-styles");
       if ($("#fav-events" + favRowCount).children().length < 4) {
         $("#fav-events" + favRowCount).append(wholeDiv);
       }
