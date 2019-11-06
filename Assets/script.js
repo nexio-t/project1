@@ -28,12 +28,19 @@ $(document).ready(function () {
   var city = $("#city").val();
   var eventType = $("#eventType").val();
 
+ 
+
   // ************************* WEATHER API ***********************************
+
+  var weatherCityName; 
 
   function displayweather() {
     var weatherAPI = "880db94beca7f4a9dc073f7b0320f24d";
     city = $("#city").val();
     $("#weatherResultsDiv").empty();
+
+    $(".city-name").empty();
+
     // Here we are building the URL we need to query the database
     var queryUrlWeather =
       "https://api.openweathermap.org/data/2.5/forecast?" +
@@ -52,7 +59,7 @@ $(document).ready(function () {
       console.log(response);
       console.log("city name " + response.city.name);
 
-      var weatherCityName = response.city.name;
+      weatherCityName = response.city.name;
       $(".city-name").append(weatherCityName + " ");
       // $("#weatherResultsDiv").prepend(NWRow1);
 
@@ -149,6 +156,14 @@ $(document).ready(function () {
     city = $("#city").val();
     event.preventDefault();
 
+    $(".events-news").empty(); 
+
+    var city_b = city.slice(1); 
+
+    var newCity = city.charAt(0).toUpperCase() + city_b + " "; 
+
+    $(".events-news").text(newCity); 
+
     //ticket master api
     var queryUrlticketMaster =
       "https://app.ticketmaster.com/discovery/v2/events.json?city=" +
@@ -166,14 +181,16 @@ $(document).ready(function () {
       var REALticketMasterResults = $("<div class='resultsDiv'>");
       for (i = 0; i < response._embedded.events.length; i++) {
         console.log(response._embedded.events[i].name);
-        var ticketMasterResults = $("<div class='resultsDiv'>");
+        var ticketMasterResults = $("<div class='card ticketmaster-div resultsDiv'>");
 
         var eventName = response._embedded.events[i].name;
-        var newRow = $("<div class=event-name>").text(eventName);
+        var newRow = $("<h5 class=event-name>").text(eventName);
         ticketMasterResults.append(newRow);
         // adding date to game
         var eventDate = response._embedded.events[i].dates.start.localDate;
-        var newTD1 = $("<div>").text(eventDate);
+        var newEventDate = moment(eventDate, "YYYY-MM-DD").format("LL"); 
+        console.log(newEventDate);
+        var newTD1 = $("<div class=sport-date >").text(newEventDate);
         ticketMasterResults.append(newTD1);
 
         // but the ticket url
@@ -181,7 +198,7 @@ $(document).ready(function () {
         var newTD2 = $("<div>");
         $(newTD2).append(
           '<a class="yelpLink btn btn-outline-primary btn-sm" href=' +
-            ticketmasterURL +
+            ticketmasterURL + " " +
             'target="_blank"' +
             ">Get tickets</a>"
         );
@@ -210,7 +227,7 @@ $(document).ready(function () {
         var favButton = $("<button>");
         favButton.attr({
           // "src": responseG.images.fixed_height.url,
-          class: "fav-button",
+          class: "fav-button btn-primary btn-sm add-fav-btn",
           type: "fav-button"
         });
         // favButton.addClass("fav-button");
@@ -233,6 +250,13 @@ $(document).ready(function () {
 
     console.log(this);
     city = $("#city").val();
+
+    var city_second_part = city.slice(1);
+
+    var newCity = city.charAt(0).toUpperCase() + city_second_part + " ";
+
+    $(".events-news").text(newCity);
+
     console.log();
     // ajaxCall($(this).attr("data-term"));
     var queryYelpURL =
@@ -257,7 +281,7 @@ $(document).ready(function () {
         console.log(queryYelpURL);
         console.log(response);
 
-        var yelpResultsDiv = $("<div class= 'card resultsDiv'>");
+        var yelpResultsDiv = $("<div class= 'card resultsDiv yelp-div'>");
         // $(".resultsDiv").css("margin", "5px");
         // $(".resultsDiv").css("border-style", "double");
 
@@ -283,16 +307,16 @@ $(document).ready(function () {
         var yelpRow3 = $("<div>");
         $(yelpRow3).append(
           '<a class=" btn btn-outline-primary btn-sm yelpLink" href=' +
-            yelpURL +
+            yelpURL + " "+
             'target="_blank"' +
-            ">Get tickets</a>"
+            ">See Yelp Reviews</a>"
         );
         yelpResultsDiv.append(yelpRow3);
 
         // price range   business[i].price
         console.log("price range " + business[i].price);
         var yelpPrice = business[i].price;
-        var yelpRow4 = $("<div>").text(yelpPrice);
+        var yelpRow4 = $("<div class=price>").text(yelpPrice);
         yelpResultsDiv.append(yelpRow4);
 
         // location business[i].location.display_address[0] + business[i].location.display_address[1] ;
@@ -302,15 +326,15 @@ $(document).ready(function () {
           business[i].location.display_address[0] +
           ", " +
           business[i].location.display_address[1];
-        var yelpRow5 = $("<div>").text(yelpLocation);
+        var yelpRow5 = $("<div class=yelp-loc>").text(yelpLocation);
         yelpResultsDiv.append(yelpRow5);
 
         // fav button
         var favButton = $("<button>");
         favButton.attr({
           // "src": responseG.images.fixed_height.url,
-          class: "fav-button",
-          type: "fav-button"
+          class: "fav-button btn-warning btn-sm add-fav-btn",
+          type: "fav-button",
         });
         // favButton.addClass("fav-button");
         favButton.text("Add to Favorites");
@@ -325,16 +349,24 @@ $(document).ready(function () {
 
   // ***************** END OF YELP API ******************
 
-  //--------------------------------------Google News API Start---------------------------------------------//
+  //--------------------------------------News API Start---------------------------------------------//
 
   function displayNewsApi() {
     event.preventDefault();
     $("#newsResultsDiv").empty();
+    $(".city-news").empty();
     console.log("display news api");
     // Update this later
     var city = $("#city")
       .val()
       .trim();
+
+      var city_second_part = city.slice(1);
+
+      city = city.charAt(0).toUpperCase() + city_second_part;
+
+        // $(".city-news").title
+        $(".city-news").append(city + " ");
 
     var noSpacesCity = city.replace(" ", "%20");
 
@@ -353,7 +385,7 @@ $(document).ready(function () {
       method: "GET"
     }).then(function(result) {
       
-      for (var i = 0; i < 15; i += 3) {
+      for (var i = 0; i < 20; i += 3) {
         var title = result.articles[i].title;
         var newDateFormat = result.articles[i].publishedAt.substring(0, 10);
         var date = moment(newDateFormat, "YYYY-MM-DD").format("LL");
@@ -373,9 +405,9 @@ $(document).ready(function () {
 
         var newItemCard = $("<div class='card news-card'></div>");
 
-        var titleHeader = $("<h5 class=news-title>" + title + "</h5>");
+        var titleHeader = $("<h5>" + title + "</h5>");
 
-        var articleSource = $("<p>" + source + "</p>");
+        var articleSource = $("<p class=source>" + source + "</p>");
 
         var articleDate = $("<p class=news-date>" + date + "</p>");
 
@@ -400,7 +432,7 @@ $(document).ready(function () {
     }); // end of then function for news api
   } // end of function functionnewsapi
 
-  //--------------------------------------Google News API End---------------------------------------------//
+  //--------------------------------------News API End---------------------------------------------//
 
   // ************************* firebase setup *********************
 
@@ -444,7 +476,10 @@ $(document).ready(function () {
       console.log(this);
       var wholeDiv = $(this).parent();
       console.log($(this).parent());
-      $(wholeDiv).addClass(".fav-button");
+
+      $(this).hide();
+
+      $(wholeDiv).addClass(".fav-button fav-styles");
       if ($("#fav-events" + favRowCount).children().length < 4) {
         $("#fav-events" + favRowCount).append(wholeDiv);
       }
